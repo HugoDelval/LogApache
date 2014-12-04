@@ -12,9 +12,16 @@ copyright            : (C) 2014 par PAPIN/DELVAL
 #include <string.h>
 //------------------------------------------------------------------ Types
 struct Document {
-    string nomDocument;
-    int nbAcces;
-    Document(string nom="nomParDefaut", int nb=0):nomDocument(nom), nbAcces(nb){}
+    string NomDocument;
+    int NbAcces;
+    Document(string nom="nomParDefaut", int nb=0):NomDocument(nom), NbAcces(nb){}
+};
+struct Arc {
+    string IdArc;
+    int NbParcours;
+    Document Refer;
+    Document Cible;
+    Arc(Document ref, Document cib, int nb=0, string id):Refer(ref), Cible(cib), NbParcours(nb), IdArc(id){}
 
 };
 //------------------------------------------------------------------------
