@@ -1,27 +1,27 @@
 /*************************************************************************
-file_base  -  description
+Log  -  description
 -------------------
 debut                : date
 copyright            : (C) year par user
 *************************************************************************/
 
-//---------- Interface de la classe <file_base> (fichier file_name) ------
+//---------- Interface de la classe <Log> (fichier Log.cpp) ------
 #if ! defined ( XXX_H )
 #define XXX_H
 
 //--------------------------------------------------- Interfaces utilisees
 
-//------------------------------------------------------------- Constantes
+//------------------------------------------------------------- Constantes 
 
-//------------------------------------------------------------------ Types
+//------------------------------------------------------------------ Types 
 
-//------------------------------------------------------------------------
-// Role de la classe <file_base>
+//------------------------------------------------------------------------ 
+// Role de la classe <Log>
 //
 //
-//------------------------------------------------------------------------
+//------------------------------------------------------------------------ 
 
-class file_base : public Ancetre
+class Log : public Ancetre
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -35,7 +35,7 @@ public:
 
 
 //------------------------------------------------- Surcharge d'operateurs
-    file_base & operator = ( const file_base & unfile_base );
+    Log & operator = ( const Log & unLog );
     // Mode d'emploi :
     //
     // Contrat :
@@ -43,25 +43,25 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    file_base ( const file_base & unfile_base );
+    Log ( const Log & unLog );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    file_base ( );
+    Log ( );
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~file_base ( );
+    virtual ~Log ( );
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-//------------------------------------------------------------------ PRIVE
+//------------------------------------------------------------------ PRIVE 
 
 protected:
 //----------------------------------------------------- Methodes protegees
@@ -83,6 +83,6 @@ private:
 
 };
 
-//----------------------------------------- Types dependants de <file_base>
+//----------------------------------------- Types dependants de <Log>
 
 #endif // XXX_H
