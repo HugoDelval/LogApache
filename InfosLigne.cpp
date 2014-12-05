@@ -107,7 +107,7 @@ istream & operator>>(istream &is, InfosLigne &ligne)
     getline(is,poubelle,SEP4);
     getline(is,heure,SEP4);
     getline(is,minute,SEP4);
-    getline(is,seconde,);
+    getline(is,seconde);
     getline(is,ligne.action);
     getline(is,ligne.protocole);
     getline(is,ligne.urlDemandee);
@@ -116,15 +116,15 @@ istream & operator>>(istream &is, InfosLigne &ligne)
     getline(is,ligne.urlReferent);
     getline(is,ligne.navigateur);
 
-    ligne.date.tm_mday= stoi(jour);
-    ligne.date.tm_mon= stoi(mois);
-    ligne.date.tm_year=stoi(annee);
-    ligne.date.tm_hour=stoi(heure);
-    ligne.date.tm_min= stoi(minute);
-    ligne.date.tm_sec= stoi(seconde);
+    ligne.date.tm_mday= atoi(jour.c_str());
+    ligne.date.tm_mon= atoi(mois.c_str());
+    ligne.date.tm_year=atoi(annee.c_str());
+    ligne.date.tm_hour=atoi(heure.c_str());
+    ligne.date.tm_min= atoi(minute.c_str());
+    ligne.date.tm_sec= atoi(seconde.c_str());
 
-    ligne.status=stoi(chaineStatus);
-    ligne.quantiteTransferee=stoi(chaineQuantiteTransferee);
+    ligne.status=atoi(chaineStatus.c_str());
+    ligne.quantiteTransferee=atoi(chaineQuantiteTransferee.c_str());
     return is;
 } //----- Fin de operator >>
 
