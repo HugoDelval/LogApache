@@ -32,23 +32,6 @@ class Log
 public:
 //----------------------------------------------------- Methodes publiques
     // void Log::LireFichier ();
-
-    void Annuaire::Ajouter(const string &nomFich)
-    {
-        ifstream file(nomFich.c_str());
-        Abonne a;
-        if(file.good())
-        {
-            while(file>>a)
-            {
-                Ajouter(a);
-            }
-        }
-        else
-        {
-            cout<<"Erreur, fichier \""<<nomFich<<"\" introuvable."<<endl;
-        }
-    }
     // Mode d'emploi :
     //
     // Contrat :

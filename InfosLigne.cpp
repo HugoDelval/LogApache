@@ -27,55 +27,49 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Methodes publiques
+string& InfosLigne::getAddresseIP() const {
+    return addresseIP;
+}
 
+string& InfosLigne::getUser() const {
+    return user;
+}
 
-public:
+string& InfosLigne::getLogName() const {
+    return logName;
+}
 
+time_t InfosLigne::getDate() const {
+    return date;
+}
 
-    string &getAddresseIP() const {
-        return addresseIP;
-    }
+string& InfosLigne::getAction() const {
+    return action;
+}
 
-    string &getUser() const {
-        return user;
-    }
+string& InfosLigne::getProtocole() const {
+    return protocole;
+}
 
-    string &getLogName() const {
-        return logName;
-    }
+string& InfosLigne::getUrlDemandee() const {
+    return urlDemandee;
+}
 
-    time_t getDate() const {
-        return date;
-    }
+string& InfosLigne::getStatus() const {
+    return status;
+}
 
-    string &getAction() const {
-        return action;
-    }
+int InfosLigne::getQuantiteeTransferee() const {
+    return quantiteeTransferee;
+}
 
-    string &getProtocole() const {
-        return protocole;
-    }
+string& InfosLigne::getUrlReferent() const {
+    return urlReferent;
+}
 
-    string &getUrlDemandee() const {
-        return urlDemandee;
-    }
-
-    string &getStatus() const {
-        return status;
-    }
-
-    int getQuantiteeTransferee() const {
-        return quantiteeTransferee;
-    }
-
-    string &getUrlReferent() const {
-        return urlReferent;
-    }
-
-    string &getNavigateur() const {
-        return navigateur;
-    }
-
+string& InfosLigne::getNavigateur() const {
+    return navigateur;
+}
 
 
 // type InfosLigne::Methode ( liste de parametres )
@@ -105,9 +99,9 @@ InfosLigne::InfosLigne ( const InfosLigne & unInfosLigne )
 
 
 InfosLigne::InfosLigne ( string addresseIPLigne,string userLigne,string logNameLigne,time_t dateLigne,
-                                string actionLigne,string protocoleLigne, string urlDemandeeLigne,
-                                        string statusLigne,int quantiteeTransfereeLigne,string urlReferentLigne,
-                                            string navigateurLigne)
+        string actionLigne,string protocoleLigne, string urlDemandeeLigne,
+        string statusLigne,int quantiteeTransfereeLigne,string urlReferentLigne,
+        string navigateurLigne)
 {
     addresseIP=addresseIPLigne;
     user=userLigne;
@@ -122,13 +116,8 @@ InfosLigne::InfosLigne ( string addresseIPLigne,string userLigne,string logNameL
     navigateur=navigateurLigne;
 }
 
-
-
-// Algorithme :
-//
-{
 #ifdef MAP
-    cout << "Appel au constructeur de <${InfosLigne}>" << endl;
+    cout << "Appel au constructeur de <InfosLigne>" << endl;
 #endif
 } //----- Fin de InfosLigne
 
@@ -138,7 +127,7 @@ InfosLigne::~InfosLigne ( )
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <file_bas}>" << endl;
+    cout << "Appel au destructeur de InfosLigne" << endl;
 #endif
 } //----- Fin de ~InfosLigne
 
@@ -148,3 +137,4 @@ InfosLigne::~InfosLigne ( )
 //----------------------------------------------------- Methodes protegees
 
 //------------------------------------------------------- Methodes privees
+

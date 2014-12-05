@@ -2,91 +2,103 @@
 Log  -  description
 -------------------
 debut                : date
-copyright            : (C) year par user
+copyright            : (C) ${year} par ${user}
 *************************************************************************/
 
-//---------- Interface de la classe <Log> (fichier Log.cpp) ------
-#if ! defined ( XXX_H )
-#define XXX_H
+//---------- Realisation de la classe <Log> (fichier Log.cpp) --
 
-//--------------------------------------------------- Interfaces utilisees
+//---------------------------------------------------------------- INCLUDE
 
-//------------------------------------------------------------- Constantes 
+//-------------------------------------------------------- Include systeme
+using namespace std;
+#include <iostream>
 
-//------------------------------------------------------------------ Types 
+//------------------------------------------------------ Include personnel
+#include "Log.h"
 
-//------------------------------------------------------------------------ 
-// Role de la classe <Log>
-//
-//
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------- Constantes
 
-class Log
-{
-//----------------------------------------------------------------- PUBLIC
-
-public:
-//----------------------------------------------------- Methodes publiques
-    InfosLigne &getListeLignes() const {
-        return listeLignes;
-    }
-};
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-
-
-//------------------------------------------------- Surcharge d'operateurs
-    Log & operator = ( const Log & unLog );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-
-//-------------------------------------------- Constructeurs - destructeur
-    Log ( const Log & unLog );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
-    Log ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    virtual ~Log ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-//------------------------------------------------------------------ PRIVE 
-
-protected:
-//----------------------------------------------------- Methodes protegees
-
-private:
-//------------------------------------------------------- Methodes privees
-
-protected:
-//----------------------------------------------------- Attributs proteges
-
-private:
-//------------------------------------------------------- Attributs prives
-
-//---------------------------------------------------------- Classes amies
-
-//-------------------------------------------------------- Classes privees
+//---------------------------------------------------- Variables de classe
 
 //----------------------------------------------------------- Types prives
 
-};
 
-//----------------------------------------- Types dependants de <Log>
+//----------------------------------------------------------------- PUBLIC
+//-------------------------------------------------------- Fonctions amies
 
-#endif // XXX_H
+//----------------------------------------------------- Methodes publiques
+
+InfosLigne Log::&getListeLignes() const 
+{
+    return listeLignes;
+}
+//
+//{
+//} //----- Fin de Methode
+
+
+//------------------------------------------------- Surcharge d'operateurs
+Log & Log::operator = ( const Log & unLog )
+// Algorithme :
+//
+{
+} //----- Fin de operator =
+
+
+//-------------------------------------------- Constructeurs - destructeur
+Log::Log ( const Log & unLog )
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au constructeur de copie de <Log>" << endl;
+#endif
+} //----- Fin de Log (constructeur de copie)
+
+
+Log::Log ( )
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <Log>" << endl;
+#endif
+} //----- Fin de Log
+
+
+Log::~Log ( )
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au destructeur de <file_bas>" << endl;
+#endif
+} //----- Fin de ~Log
+
+
+//------------------------------------------------------------------ PRIVE
+
+//----------------------------------------------------- Methodes protegees
+
+//------------------------------------------------------- Methodes privees
+
+/*
+    void Annuaire::Ajouter(const string &nomFich)
+    {
+        ifstream file(nomFich.c_str());
+        Abonne a;
+        if(file.good())
+        {
+            while(file>>a)
+            {
+                Ajouter(a);
+            }
+        }
+        else
+        {
+            cout<<"Erreur, fichier \""<<nomFich<<"\" introuvable."<<endl;
+        }
+    }
+    */
+
+
