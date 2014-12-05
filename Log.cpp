@@ -27,7 +27,10 @@ class Log
 
 public:
 //----------------------------------------------------- Methodes publiques
-
+    InfosLigne &getListeLignes() const {
+        return listeLignes;
+    }
+};
     // Mode d'emploi :
     //
     // Contrat :

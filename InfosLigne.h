@@ -27,7 +27,19 @@ class InfosLigne : public Ancetre
 
 public:
 //----------------------------------------------------- Methodes publiques
-    // type Methode ( liste de parametres );
+    string &getAddresseIP() const;
+    string &getUser() const;
+    string &getLogName() const;
+    time_t getDate() const;
+    string &getAction() const;
+    string &getProtocole() const;
+    string &getUrlDemandee() const;
+    string &getStatus() const;
+    int getQuantiteeTransferee() const;
+    string &getUrlReferent() const;
+    string &getNavigateur() const;
+
+
     // Mode d'emploi :
     //
     // Contrat :

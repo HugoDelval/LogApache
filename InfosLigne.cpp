@@ -104,8 +104,26 @@ InfosLigne::InfosLigne ( const InfosLigne & unInfosLigne )
 } //----- Fin de InfosLigne (constructeur de copie)
 
 
-InfosLigne::InfosLigne ( string addresseIP,string user,string logName,time_t date,string action,string protocole,
-                                string urlDemandee,string status,int quantiteeTransferee,string urlReferent,string navigateur;)
+InfosLigne::InfosLigne ( string addresseIPLigne,string userLigne,string logNameLigne,time_t dateLigne,
+                                string actionLigne,string protocoleLigne, string urlDemandeeLigne,
+                                        string statusLigne,int quantiteeTransfereeLigne,string urlReferentLigne,
+                                            string navigateurLigne)
+{
+    addresseIP=addresseIPLigne;
+    user=userLigne;
+    logName=logNameLigne;
+    date=dateLigne;
+    action=actionLigne;
+    protocole=protocoleLigne;
+    urlDemandee=urlDemandeeLigne;
+    status=statusLigne;
+    quantiteeTransferee=quantiteeTransfereeLigne;
+    urlReferent=urlReferentLigne;
+    navigateur=navigateurLigne;
+}
+
+
+
 // Algorithme :
 //
 {

@@ -54,6 +54,7 @@ public:
     // Contrat :
     //
 
+    InfosLigne &getListeLignes() const;
 
 //------------------------------------------------- Surcharge d'operateurs
     Log & operator = ( const Log & unLog );
@@ -95,14 +96,12 @@ protected:
 
 private:
 //------------------------------------------------------- Attributs prives
-    list<DonneesLigne> listeLignes;
+    list<InfosLigne> listeLignes;
 //---------------------------------------------------------- Classes amies
 
 //-------------------------------------------------------- Classes privees
 
 //----------------------------------------------------------- Types prives
-
-};
 
 //----------------------------------------- Types dependants de <Log>
 
