@@ -6,18 +6,16 @@ copyright            : (C) year par user
 *************************************************************************/
 
 //---------- Interface de la classe <Log> (fichier Log.h) ------
-#if ! defined ( XXX_H )
-#define XXX_H
+#if ! defined ( LOG_H )
+#define LOG_H
 
 //--------------------------------------------------- Interfaces utilisees
-#include <string.h>
 #include <time.h>
 #include <list>
+#include "InfosLigne.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
-
-typedef struct AVLTreeNode* ptrOnAVLTreeNode;
 
 //------------------------------------------------------------------------
 // Role de la classe <Log>
@@ -25,8 +23,7 @@ typedef struct AVLTreeNode* ptrOnAVLTreeNode;
 //
 //------------------------------------------------------------------------
 
-class Log
-{
+class Log {
 //----------------------------------------------------------------- PUBLIC
 
 public:
@@ -37,10 +34,10 @@ public:
     // Contrat :
     //
 
-    InfosLigne &getListeLignes() const;
+    list<InfosLigne> GetListeLignes() const;
 
 //------------------------------------------------- Surcharge d'operateurs
-    Log & operator = ( const Log & unLog );
+    Log &operator=(const Log &unLog);
     // Mode d'emploi :
     //
     // Contrat :
@@ -48,19 +45,14 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    Log ( const Log & unLog );
+    Log(const Log &unLog);
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Log ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
-    virtual ~Log ( );
+    virtual ~Log();
     // Mode d'emploi :
     //
     // Contrat :
@@ -85,7 +77,7 @@ private:
 //-------------------------------------------------------- Classes privees
 
 //----------------------------------------------------------- Types prives
-
+};
 //----------------------------------------- Types dependants de <Log>
 
-#endif // XXX_H
+#endif // LOG_H

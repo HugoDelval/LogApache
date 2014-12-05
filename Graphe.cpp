@@ -34,32 +34,17 @@ using namespace std;
 //} //----- Fin de Methode
 
 
-//------------------------------------------------- Surcharge d'operateurs
-Graphe & Graphe::operator = ( const Graphe & unGraphe )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-
 
 //-------------------------------------------- Constructeurs - destructeur
-Graphe::Graphe ( const Graphe & unGraphe )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Graphe>" << endl;
-#endif
-} //----- Fin de Graphe (constructeur de copie)
 
-
-Graphe::Graphe ( )
+Graphe::Graphe (Log &unLog, int typeCommande )
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Graphe>" << endl;
 #endif
+    monTop10=new Top10(unLog);
 } //----- Fin de Graphe
 
 

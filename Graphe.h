@@ -70,7 +70,7 @@ private:
     typedef set<string> EnsembleLabel;       // label, pour verifier si le noeud a deja ete insere dans le fichier (utile seulement quand on rempli un fichier)
     DicoIdArc dicoIdArc;
     EnsembleLabel traceLabels;
-    Top10 monTop10;
+    Top10 *monTop10;
 
 //---------------------------------------------------------- Classes amies
 

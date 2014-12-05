@@ -6,10 +6,14 @@ copyright            : (C) year par user
 *************************************************************************/
 
 //---------- Interface de la classe <InfosLigne> (fichier InfosLigne.h) ------
-#if ! defined ( XXX_H )
-#define XXX_H
+#if ! defined ( INFOS_LIGNE_H )
+#define INFOS_LIGNE_H
 
 //--------------------------------------------------- Interfaces utilisees
+#include <string.h>
+#include <time.h>
+
+using namespace std;
 
 //------------------------------------------------------------- Constantes 
 
@@ -21,23 +25,23 @@ copyright            : (C) year par user
 //
 //------------------------------------------------------------------------ 
 
-class InfosLigne : public Ancetre
+class InfosLigne
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Methodes publiques
-    string &getAddresseIP() const;
-    string &getUser() const;
-    string &getLogName() const;
-    time_t getDate() const;
-    string &getAction() const;
-    string &getProtocole() const;
-    string &getUrlDemandee() const;
-    string &getStatus() const;
-    int getQuantiteeTransferee() const;
-    string &getUrlReferent() const;
-    string &getNavigateur() const;
+    string GetAddresseIP();
+    string GetUser();
+    string GetLogName();
+    time_t GetDate();
+    string GetAction();
+    string GetProtocole();
+    string GetUrlDemandee();
+    string GetStatus();
+    int GetQuantiteeTransferee();
+    string GetUrlReferent();
+    string GetNavigateur();
 
 
     // Mode d'emploi :
@@ -55,14 +59,15 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    InfosLigne ( const InfosLigne & unInfosLigne );
-
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    InfosLigne ( );
+    InfosLigne ( string addresseIPLigne,string userLigne,string logNameLigne,time_t dateLigne,
+            string actionLigne,string protocoleLigne, string urlDemandeeLigne,
+            string statusLigne,int quantiteeTransfereeLigne,string urlReferentLigne,
+            string navigateurLigne);
     // Mode d'emploi :
     //
     // Contrat :
@@ -110,4 +115,4 @@ private:
 
 //----------------------------------------- Types dependants de <InfosLigne>
 
-#endif // XXX_H
+#endif // INFOS_LIGNE_H

@@ -46,7 +46,7 @@ Top10::Top10 ( const Top10 & unTop10 )
 } //----- Fin de Top10 (constructeur de copie)
 
 
-Top10::Top10 ( )
+Top10::Top10 ( Log &unLog, int typeCommande)
 // Algorithme :
 //
 {

@@ -10,11 +10,11 @@ copyright            : (C) ${year} par ${user}
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include systeme
-using namespace std;
 #include <iostream>
 
 //------------------------------------------------------ Include personnel
 #include "Log.h"
+
 
 //------------------------------------------------------------- Constantes
 
@@ -28,7 +28,7 @@ using namespace std;
 
 //----------------------------------------------------- Methodes publiques
 
-InfosLigne Log::&getListeLignes() const 
+list<InfosLigne> Log::GetListeLignes() const
 {
     return listeLignes;
 }
@@ -38,32 +38,11 @@ InfosLigne Log::&getListeLignes() const
 
 
 //------------------------------------------------- Surcharge d'operateurs
-Log & Log::operator = ( const Log & unLog )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
+
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Log::Log ( const Log & unLog )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Log>" << endl;
-#endif
-} //----- Fin de Log (constructeur de copie)
 
-
-Log::Log ( )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de <Log>" << endl;
-#endif
-} //----- Fin de Log
 
 
 Log::~Log ( )

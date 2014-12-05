@@ -27,47 +27,47 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Methodes publiques
-string& InfosLigne::getAddresseIP() const {
+string InfosLigne::GetAddresseIP()  {
     return addresseIP;
 }
 
-string& InfosLigne::getUser() const {
+string InfosLigne::GetUser()  {
     return user;
 }
 
-string& InfosLigne::getLogName() const {
+string InfosLigne::GetLogName()  {
     return logName;
 }
 
-time_t InfosLigne::getDate() const {
+time_t InfosLigne::GetDate()  {
     return date;
 }
 
-string& InfosLigne::getAction() const {
+string InfosLigne::GetAction()  {
     return action;
 }
 
-string& InfosLigne::getProtocole() const {
+string InfosLigne::GetProtocole()  {
     return protocole;
 }
 
-string& InfosLigne::getUrlDemandee() const {
+string InfosLigne::GetUrlDemandee()  {
     return urlDemandee;
 }
 
-string& InfosLigne::getStatus() const {
+string InfosLigne::GetStatus()  {
     return status;
 }
 
-int InfosLigne::getQuantiteeTransferee() const {
+int InfosLigne::GetQuantiteeTransferee()  {
     return quantiteeTransferee;
 }
 
-string& InfosLigne::getUrlReferent() const {
+string InfosLigne::GetUrlReferent()  {
     return urlReferent;
 }
 
-string& InfosLigne::getNavigateur() const {
+string InfosLigne::GetNavigateur()  {
     return navigateur;
 }
 
@@ -88,14 +88,6 @@ InfosLigne & InfosLigne::operator = ( const InfosLigne & unInfosLigne )
 
 
 //-------------------------------------------- Constructeurs - destructeur
-InfosLigne::InfosLigne ( const InfosLigne & unInfosLigne )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <InfosLigne>" << endl;
-#endif
-} //----- Fin de InfosLigne (constructeur de copie)
 
 
 InfosLigne::InfosLigne ( string addresseIPLigne,string userLigne,string logNameLigne,time_t dateLigne,
@@ -114,7 +106,6 @@ InfosLigne::InfosLigne ( string addresseIPLigne,string userLigne,string logNameL
     quantiteeTransferee=quantiteeTransfereeLigne;
     urlReferent=urlReferentLigne;
     navigateur=navigateurLigne;
-}
 
 #ifdef MAP
     cout << "Appel au constructeur de <InfosLigne>" << endl;
