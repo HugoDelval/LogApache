@@ -36,15 +36,6 @@ using namespace std;
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Top10::Top10 ( const Top10 & unTop10 )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <Top10>" << endl;
-#endif
-} //----- Fin de Top10 (constructeur de copie)
-
 
 Top10::Top10 ( Log &unLog, int typeCommande)
 // Algorithme :
