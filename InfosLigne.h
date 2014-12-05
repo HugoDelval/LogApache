@@ -31,17 +31,17 @@ class InfosLigne
 
 public:
 //----------------------------------------------------- Methodes publiques
-    string GetAddresseIP();
-    string GetUser();
-    string GetLogName();
-    time_t GetDate();
-    string GetAction();
-    string GetProtocole();
-    string GetUrlDemandee();
-    string GetStatus();
-    int GetQuantiteeTransferee();
-    string GetUrlReferent();
-    string GetNavigateur();
+    string GetAddresseIP() const;
+    string GetUser()const;
+    string GetLogName()const;
+    time_t GetDate()const;
+    string GetAction()const;
+    string GetProtocole()const;
+    string GetUrlDemandee()const;
+    string GetStatus()const;
+    int GetQuantiteeTransferee()const;
+    string GetUrlReferent()const;
+    string GetNavigateur()const;
 
 
     // Mode d'emploi :

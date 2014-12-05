@@ -27,47 +27,47 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Methodes publiques
-string InfosLigne::GetAddresseIP()  {
+string InfosLigne::GetAddresseIP() const{
     return addresseIP;
 }
 
-string InfosLigne::GetUser()  {
+string InfosLigne::GetUser() const {
     return user;
 }
 
-string InfosLigne::GetLogName()  {
+string InfosLigne::GetLogName() const {
     return logName;
 }
 
-time_t InfosLigne::GetDate()  {
+time_t InfosLigne::GetDate() const {
     return date;
 }
 
-string InfosLigne::GetAction()  {
+string InfosLigne::GetAction() const {
     return action;
 }
 
-string InfosLigne::GetProtocole()  {
+string InfosLigne::GetProtocole() const {
     return protocole;
 }
 
-string InfosLigne::GetUrlDemandee()  {
+string InfosLigne::GetUrlDemandee() const {
     return urlDemandee;
 }
 
-string InfosLigne::GetStatus()  {
+string InfosLigne::GetStatus() const {
     return status;
 }
 
-int InfosLigne::GetQuantiteeTransferee()  {
+int InfosLigne::GetQuantiteeTransferee() const {
     return quantiteeTransferee;
 }
 
-string InfosLigne::GetUrlReferent()  {
+string InfosLigne::GetUrlReferent() const {
     return urlReferent;
 }
 
-string InfosLigne::GetNavigateur()  {
+string InfosLigne::GetNavigateur() const {
     return navigateur;
 }
 
