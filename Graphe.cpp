@@ -58,7 +58,7 @@ Graphe::Graphe ( )
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <${Graphe}>" << endl;
+    cout << "Appel au constructeur de <Graphe>" << endl;
 #endif
 } //----- Fin de Graphe
 
@@ -68,7 +68,7 @@ Graphe::~Graphe ( )
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <file_bas}>" << endl;
+    cout << "Appel au destructeur de <Graphe>" << endl;
 #endif
 } //----- Fin de ~Graphe
 

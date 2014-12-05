@@ -34,13 +34,6 @@ using namespace std;
 //} //----- Fin de Methode
 
 
-//------------------------------------------------- Surcharge d'operateurs
-Top10 & Top10::operator = ( const Top10 & unTop10 )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
-
 
 //-------------------------------------------- Constructeurs - destructeur
 Top10::Top10 ( const Top10 & unTop10 )
@@ -58,7 +51,7 @@ Top10::Top10 ( )
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <${Top10}>" << endl;
+    cout << "Appel au constructeur de <Top10>" << endl;
 #endif
 } //----- Fin de Top10
 
@@ -68,7 +61,7 @@ Top10::~Top10 ( )
 //
 {
 #ifdef MAP
-    cout << "Appel au destructeur de <file_bas}>" << endl;
+    cout << "Appel au destructeur de <Top10>" << endl;
 #endif
 } //----- Fin de ~Top10
 
