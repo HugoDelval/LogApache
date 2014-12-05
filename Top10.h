@@ -65,8 +65,8 @@ private:
 
 private:
 //------------------------------------------------------- Attributs prives
-    typedef map<string, *Document> DicoNomDocument;
-    typedef list<*Document> ListeDoc;
+    typedef map<string, Document*> DicoNomDocument;
+    typedef list<Document*> ListeDoc;
     DicoNomDocument dicoNomDoc;
     ListeDoc listeDocTrieeSelonVisites;
 

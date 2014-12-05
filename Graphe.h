@@ -66,7 +66,7 @@ private:
 
 private:
 //------------------------------------------------------- Attributs prives
-    typedef map<string, *Arc> DicoIdArc;     // id, arc
+    typedef map<string, Arc*> DicoIdArc;     // id, arc
     typedef set<string> EnsembleLabel;       // label, pour verifier si le noeud a deja ete insere dans le fichier (utile seulement quand on rempli un fichier)
     DicoIdArc dicoIdArc;
     EnsembleLabel traceLabels;
