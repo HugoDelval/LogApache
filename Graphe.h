@@ -1,27 +1,32 @@
 /*************************************************************************
-file_base  -  description
+Graphe  -  represente un graphe, compose d'arcs et de documents
 -------------------
-debut                : date
-copyright            : (C) year par user
+debut                : 04/12/2014
+copyright            : (C) 2014 par PAPIN/DELVAL
 *************************************************************************/
 
-//---------- Interface de la classe <file_base> (fichier file_name) ------
-#if ! defined ( XXX_H )
-#define XXX_H
+//---------- Interface de la classe <Graphe> (fichier Graphe.cpp) ------
+#if ! defined ( GRAPHE_H )
+#define GRAPHE_H
 
 //--------------------------------------------------- Interfaces utilisees
-
+#include <map>
+#include <set>
+#include <string>
+#include "Log.h"
+#include "Top10.h"
+#include "Structures.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Role de la classe <file_base>
+// Role de la classe <Graphe>
 //
 //
 //------------------------------------------------------------------------
 
-class file_base : public Ancetre
+class Graphe
 {
 //----------------------------------------------------------------- PUBLIC
 
@@ -34,46 +39,38 @@ public:
     //
 
 
-//------------------------------------------------- Surcharge d'operateurs
-    file_base & operator = ( const file_base & unfile_base );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-
 //-------------------------------------------- Constructeurs - destructeur
-    file_base ( const file_base & unfile_base );
+    Graphe ( const Graphe & unGraphe );
     // Mode d'emploi (constructeur de copie) :
-    //
+    //      ne sert pour l'instant qu'a interdire le constructeur de copie (pas d'implementation dans le .cpp)
     // Contrat :
     //
 
-    file_base ( );
+    Graphe (Log &unLog, int typeCommande=0 );
     // Mode d'emploi :
-    //
+    //      construit un objet Graphe grace aux infos contenus dans le Log, selectionne et traite les infos interessantes
     // Contrat :
-    //
+    //      le Log est correctement construit
 
-    virtual ~file_base ( );
+    virtual ~Graphe ( );
     // Mode d'emploi :
-    //
+    //      detruit le Graphe et tous les objets associes
     // Contrat :
     //
 
 //------------------------------------------------------------------ PRIVE
 
-protected:
-//----------------------------------------------------- Methodes protegees
-
 private:
 //------------------------------------------------------- Methodes privees
 
-protected:
-//----------------------------------------------------- Attributs proteges
 
 private:
 //------------------------------------------------------- Attributs prives
+    typedef map<string, *Arc> DicoIdArc;     // id, arc
+    typedef set<string> EnsembleLabel;       // label, pour verifier si le noeud a deja ete insere dans le fichier (utile seulement quand on rempli un fichier)
+    DicoIdArc dicoIdArc;
+    EnsembleLabel traceLabels;
+    Top10 monTop10;
 
 //---------------------------------------------------------- Classes amies
 
@@ -83,6 +80,6 @@ private:
 
 };
 
-//----------------------------------------- Types dependants de <file_base>
+//----------------------------------------- Types dependants de <Graphe>
 
-#endif // XXX_H
+#endif // GRAPHE_H
