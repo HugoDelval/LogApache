@@ -37,7 +37,7 @@ using namespace std;
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Top10::Top10 ( Log &unLog, bool xFlag, bool tFlag, bool gFlag, string argTFflag, string argGFlag )
+Top10::Top10 (Log &unLog, int heure, bool xFlag, ostream& direction)
 // Algorithme :
 //
 {

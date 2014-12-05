@@ -37,14 +37,14 @@ using namespace std;
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Graphe::Graphe (Log &unLog, bool xFlag, bool tFlag, bool gFlag, string argTFlag, string argGFlag )
+Graphe::Graphe (Log &unLog, int heure, bool xFlag, ostream &direction )
 // Algorithme :
 //
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Graphe>" << endl;
 #endif
-    monTop10=new Top10(unLog,xFlag,tFlag,gFlag,argTFlag,argGFlag);
+    monTop10=new Top10(unLog, heure, xFlag, direction);
 
 } //----- Fin de Graphe
 

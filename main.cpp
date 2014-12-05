@@ -1,15 +1,17 @@
+#include <stdlib.h>
 #include <iostream>
 #include <unistd.h>
 #include <fstream>
-#include <string.h>
 #include "Graphe.h"
 
 using namespace std;
 
 const int AUCUNE_ERREUR=0;
 const int PAS_DE_ARG_FICHIER=1;
-const int FICHIER_INTROUVABLE=2;
+const int FICHIER_LOG_INTROUVABLE =2;
 const int TROP_ARGUMENTS=3;
+const int ARG_HEURE_NON_VALIDE=4;
+const int FICHIER_DOT_NON_MODIFIABLE=5;
 
 static int executeApplication(int argc, char* argv[])
 {
@@ -49,17 +51,48 @@ static int executeApplication(int argc, char* argv[])
 
     if(optind==(argc-1)) // si il ne reste qu'un argument sans flag (le nom du fichier normalement)
     {
-        string nomFichier(argv[optind]);
-        ifstream file(nomFichier.c_str());
+        string nomFichierLog(argv[optind]);
+        ifstream file(nomFichierLog.c_str());
         if(file.good())
         {
             //on peut commencer le traitement
             Log monLog(file);
-            Graphe monGraphe(monLog,xFlag,tFlag,gFlag,argTFlag,argGFlag);
+            int heure=-1;
+            if(tFlag)
+            {
+                try {
+                    heure=atoi(argTFlag.c_str());
+                }catch(int e){
+                    heure=-1;
+                    res=ARG_HEURE_NON_VALIDE;
+                }
+                if(heure>23 || heure<-1)
+                {
+                    heure=-1;
+                    res=ARG_HEURE_NON_VALIDE;
+                }
+            }
+            if(gFlag)
+            {
+                string nomFichierDot(argv[optind]);
+                ofstream fileDot(nomFichierDot.c_str());
+                if(fileDot.good())
+                {
+                    Graphe monGraphe(monLog,xFlag,heure,fileDot);
+                }
+                else
+                {
+                    res=FICHIER_DOT_NON_MODIFIABLE;
+                }
+            }
+            else
+            {
+                Graphe monGraphe(monLog,xFlag,heure);
+            }
         }
         else
         {
-            res=FICHIER_INTROUVABLE;
+            res= FICHIER_LOG_INTROUVABLE;
         }
     }
     else
@@ -73,8 +106,6 @@ static int executeApplication(int argc, char* argv[])
             res=PAS_DE_ARG_FICHIER;
         }
     }
-
-
     return res;
 }
 
@@ -94,7 +125,7 @@ int main(int argc, char* argv[]) {
             cout<<"exemple d'appel :     ./analog nomFichier.log"<<endl;
             cout<<"Pour plus d'informations sur le fonctionnement de cette application, vous pouvez vous reporter au README.txt"<<endl;
             break;
-        case FICHIER_INTROUVABLE:
+        case FICHIER_LOG_INTROUVABLE:
             cout<<endl;
             cout<<"Erreur d'ouverture de fichier."<<endl;
             cout<<"Vous devez indiquer en dernier paramètre le nom du fichier log que vous souhaitez traiter."<<endl;
@@ -120,6 +151,33 @@ int main(int argc, char* argv[]) {
             cout<<"       Permet de ne prendre en compte que les hits qui sont dans le créneau horaire [heure, heure+1[."<<endl;
             cout<<"       l'argument [heure] est donc un entier, allant de 0 à 23."<<endl;
             cout<<endl;
+            cout<<"Pour plus d'informations sur le fonctionnement de cette application, vous pouvez vous reporter au README.txt"<<endl;
+            break;
+        case FICHIER_DOT_NON_MODIFIABLE:
+            cout<<endl;
+            cout<<"Erreur d'ecriture dans le fichier dot."<<endl;
+            cout<<"Vous devez indiquer en paramètre derière le -g le nom du fichier dot que vous souhaitez générer."<<endl;
+            cout<<"Conditions d'utilisation : L'adresse spécifiée doit être valide et vous devez avoir les droits d'ecriture à l'emplacement considéré."<<endl;
+            cout<<"Syntaxe de l'option :"<<endl;
+            cout<<endl;
+            cout<<"    [-g nomFichier.dot]"<<endl;
+            cout<<"       Permet de produire un fichier au format GraphViz représentant le fichier log."<<endl;
+            cout<<"       Le fichier sera produit à l'adresse [nomFichier.dot]."<<endl;
+            cout<<"       Chaque document apparaîtra sous la forme d'un noeud et chaque arc indiquera le nombre de parcours associés."<<endl;
+            cout<<endl;
+            cout<<"exemple d'appel :     ./analog -g nomFichier.dot /sousDossier/nomFichier.log"<<endl;
+            cout<<"Pour plus d'informations sur le fonctionnement de cette application, vous pouvez vous reporter au README.txt"<<endl;
+            break;
+        case ARG_HEURE_NON_VALIDE:
+            cout<<"Erreur dans l'option -t. L'heure spécifiée n'est pas valide."<<endl;
+            cout<<"Vous devez indiquer en paramètre derière le -t une heure."<<endl;
+            cout<<"Syntaxe de l'option :"<<endl;
+            cout<<endl;
+            cout<<"    [-t heure]"<<endl;
+            cout<<"       Permet de ne prendre en compte que les hits qui sont dans le créneau horaire [heure, heure+1[."<<endl;
+            cout<<"       l'argument [heure] est donc un entier, allant de 0 à 23."<<endl;
+            cout<<endl;
+            cout<<"exemple d'appel :     ./analog -h 12 /sousDossier/nomFichier.log"<<endl;
             cout<<"Pour plus d'informations sur le fonctionnement de cette application, vous pouvez vous reporter au README.txt"<<endl;
             break;
         default:
