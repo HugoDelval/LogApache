@@ -41,7 +41,7 @@ public:
 
 //-------------------------------------------- Constructeurs - destructeur
 
-    Top10 ( Log &unLog, int typeCommande=0 );
+    Top10 ( Log &unLog, bool xFlag=false, bool tFlag=false, bool gFlag=false, string argTFflag="", string argGFlag="" );
     // Mode d'emploi :
     //    construit un objet Top10 grace aux infos contenus dans le Log, selectionne et traite les infos interessantes
     // Contrat :

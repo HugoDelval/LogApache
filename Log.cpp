@@ -43,6 +43,14 @@ list<InfosLigne> Log::GetListeLignes() const
 
 //-------------------------------------------- Constructeurs - destructeur
 
+Log::Log(ifstream& file)
+{
+/*    InfosLigne i;
+    while(file>>i)
+    {
+        listeLignes.insert(i);
+    }*/
+}
 
 
 Log::~Log ( )

@@ -41,7 +41,7 @@ public:
 
 //-------------------------------------------- Constructeurs - destructeur
 
-    Graphe (Log &unLog, int typeCommande=0 );
+    Graphe (Log &unLog, bool xFlag=false, bool tFlag=false, bool gFlag=false, string argTFlag="", string argGFlag="" );
     // Mode d'emploi :
     //      construit un objet Graphe grace aux infos contenus dans le Log, selectionne et traite les infos interessantes
     // Contrat :
