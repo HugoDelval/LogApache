@@ -12,6 +12,7 @@ copyright            : (C) year par user
 //--------------------------------------------------- Interfaces utilisees
 #include <string.h>
 #include <time.h>
+#include <iostream>
 
 using namespace std;
 
@@ -34,15 +35,16 @@ public:
     string GetAddresseIP() const;
     string GetUser()const;
     string GetLogName()const;
-    time_t GetDate()const;
+    tm Getdate()const;
     string GetAction()const;
     string GetProtocole()const;
     string GetUrlDemandee()const;
-    string GetStatus()const;
-    int GetQuantiteeTransferee()const;
+    int GetStatus()const;
+    int GetquantiteTransferee()const;
     string GetUrlReferent()const;
     string GetNavigateur()const;
 
+    friend istream & operator>>(istream &is, InfosLigne &ligne);
 
     // Mode d'emploi :
     //
@@ -51,7 +53,7 @@ public:
 
 
 //------------------------------------------------- Surcharge d'operateurs
-    InfosLigne & operator = ( const InfosLigne & unInfosLigne );
+   // istream & operator>>(istream &is, const InfosLigne &ligne);
     // Mode d'emploi :
     //
     // Contrat :
@@ -64,10 +66,9 @@ public:
     // Contrat :
     //
 
-    InfosLigne ( string addresseIPLigne,string userLigne,string logNameLigne,time_t dateLigne,
-            string actionLigne,string protocoleLigne, string urlDemandeeLigne,
-            string statusLigne,int quantiteeTransfereeLigne,string urlReferentLigne,
-            string navigateurLigne);
+    InfosLigne ( string addresseIPLigne,string userLigne,string logNameLigne, string actionLigne,
+            string protocoleLigne, string urlDemandeeLigne, int statusLigne,
+            string urlReferentLigne, string navigateurLigne, int quantiteTransfereeLigne,tm dateLigne);
     // Mode d'emploi :
     //
     // Contrat :
@@ -95,12 +96,12 @@ private:
     string addresseIP;
     string user;
     string logName;
-    time_t date;
+    tm date;
     string action;
     string protocole;
     string urlDemandee;
-    string status;
-    int quantiteeTransferee;
+    int status;
+    int quantiteTransferee;
     string urlReferent;
 
 private:

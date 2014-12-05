@@ -17,7 +17,8 @@ using namespace std;
 #include "InfosLigne.h"
 
 //------------------------------------------------------------- Constantes
-
+static const char SEP1='1';
+static const char SEP2='-';
 //---------------------------------------------------- Variables de classe
 
 //----------------------------------------------------------- Types prives
@@ -39,7 +40,8 @@ string InfosLigne::GetLogName() const {
     return logName;
 }
 
-time_t InfosLigne::GetDate() const {
+
+tm InfosLigne::Getdate() const {
     return date;
 }
 
@@ -55,13 +57,10 @@ string InfosLigne::GetUrlDemandee() const {
     return urlDemandee;
 }
 
-string InfosLigne::GetStatus() const {
+int InfosLigne::GetStatus() const {
     return status;
 }
 
-int InfosLigne::GetQuantiteeTransferee() const {
-    return quantiteeTransferee;
-}
 
 string InfosLigne::GetUrlReferent() const {
     return urlReferent;
@@ -80,20 +79,36 @@ string InfosLigne::GetNavigateur() const {
 
 
 //------------------------------------------------- Surcharge d'operateurs
-InfosLigne & InfosLigne::operator = ( const InfosLigne & unInfosLigne )
-// Algorithme :
-//
+
+istream & operator>>(istream &is, InfosLigne &ligne)
 {
-} //----- Fin de operator =
+    string chaineDate;
+    string chaineStatus;
+    string chaineQuantiteTransferee;
+    getline(is,ligne.addresseIP);
+    getline(is,ligne.user);
+    getline(is,ligne.logName);
+    getline(is,chaineDate);
+    getline(is,ligne.action);
+    getline(is,ligne.protocole);
+    getline(is,ligne.urlDemandee);
+    getline(is,chaineStatus);
+    getline(is,chaineQuantiteTransferee);
+    getline(is,ligne.urlReferent);
+    getline(is,ligne.navigateur);
+
+    //par defaut \n
+
+    return is;
+} //----- Fin de operator >>
 
 
 //-------------------------------------------- Constructeurs - destructeur
 
 
-InfosLigne::InfosLigne ( string addresseIPLigne,string userLigne,string logNameLigne,time_t dateLigne,
-        string actionLigne,string protocoleLigne, string urlDemandeeLigne,
-        string statusLigne,int quantiteeTransfereeLigne,string urlReferentLigne,
-        string navigateurLigne)
+InfosLigne::InfosLigne ( string addresseIPLigne,string userLigne,string logNameLigne, string actionLigne,
+                string protocoleLigne, string urlDemandeeLigne, int statusLigne,
+                    string urlReferentLigne, string navigateurLigne, int quantiteTransfereeLigne,tm dateLigne )
 {
     addresseIP=addresseIPLigne;
     user=userLigne;
@@ -103,9 +118,9 @@ InfosLigne::InfosLigne ( string addresseIPLigne,string userLigne,string logNameL
     protocole=protocoleLigne;
     urlDemandee=urlDemandeeLigne;
     status=statusLigne;
-    quantiteeTransferee=quantiteeTransfereeLigne;
     urlReferent=urlReferentLigne;
     navigateur=navigateurLigne;
+    quantiteTransferee=quantiteTransfereeLigne;
 
 #ifdef MAP
     cout << "Appel au constructeur de <InfosLigne>" << endl;
