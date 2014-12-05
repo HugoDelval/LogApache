@@ -2,87 +2,79 @@
 Graphe  -  description
 -------------------
 debut                : date
-copyright            : (C) year par user
+copyright            : (C) ${year} par ${user}
 *************************************************************************/
 
-//---------- Interface de la classe <Graphe> (fichier Graphe.cpp) ------
-#if ! defined ( XXX_H )
-#define XXX_H
+//---------- Realisation de la classe <Graphe> (fichier Graphe.cpp) --
 
-//--------------------------------------------------- Interfaces utilisees
+//---------------------------------------------------------------- INCLUDE
 
-//------------------------------------------------------------- Constantes 
+//-------------------------------------------------------- Include systeme
+using namespace std;
+#include <iostream>
 
-//------------------------------------------------------------------ Types 
+//------------------------------------------------------ Include personnel
+#include "Graphe.h"
 
-//------------------------------------------------------------------------ 
-// Role de la classe <Graphe>
-//
-//
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------- Constantes
 
-class Graphe
-{
-//----------------------------------------------------------------- PUBLIC
-
-public:
-//----------------------------------------------------- Methodes publiques
-    // type Methode ( liste de parametres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-
-//------------------------------------------------- Surcharge d'operateurs
-    Graphe & operator = ( const Graphe & unGraphe );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-
-//-------------------------------------------- Constructeurs - destructeur
-    Graphe ( const Graphe & unGraphe );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
-    Graphe ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    virtual ~Graphe ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-//------------------------------------------------------------------ PRIVE 
-
-protected:
-//----------------------------------------------------- Methodes protegees
-
-private:
-//------------------------------------------------------- Methodes privees
-
-protected:
-//----------------------------------------------------- Attributs proteges
-
-private:
-//------------------------------------------------------- Attributs prives
-
-//---------------------------------------------------------- Classes amies
-
-//-------------------------------------------------------- Classes privees
+//---------------------------------------------------- Variables de classe
 
 //----------------------------------------------------------- Types prives
 
-};
 
-//----------------------------------------- Types dependants de <Graphe>
+//----------------------------------------------------------------- PUBLIC
+//-------------------------------------------------------- Fonctions amies
 
-#endif // XXX_H
+//----------------------------------------------------- Methodes publiques
+// type Graphe::Methode ( liste de parametres )
+// Algorithme :
+//
+//{
+//} //----- Fin de Methode
+
+
+//------------------------------------------------- Surcharge d'operateurs
+Graphe & Graphe::operator = ( const Graphe & unGraphe )
+// Algorithme :
+//
+{
+} //----- Fin de operator =
+
+
+//-------------------------------------------- Constructeurs - destructeur
+Graphe::Graphe ( const Graphe & unGraphe )
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au constructeur de copie de <Graphe>" << endl;
+#endif
+} //----- Fin de Graphe (constructeur de copie)
+
+
+Graphe::Graphe ( )
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <${Graphe}>" << endl;
+#endif
+} //----- Fin de Graphe
+
+
+Graphe::~Graphe ( )
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au destructeur de <file_bas}>" << endl;
+#endif
+} //----- Fin de ~Graphe
+
+
+//------------------------------------------------------------------ PRIVE
+
+//----------------------------------------------------- Methodes protegees
+
+//------------------------------------------------------- Methodes privees

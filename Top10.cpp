@@ -2,87 +2,79 @@
 Top10  -  description
 -------------------
 debut                : date
-copyright            : (C) year par user
+copyright            : (C) ${year} par ${user}
 *************************************************************************/
 
-//---------- Interface de la classe <Top10> (fichier Top10.cpp) ------
-#if ! defined ( XXX_H )
-#define XXX_H
+//---------- Realisation de la classe <Top10> (fichier Top10.cpp) --
 
-//--------------------------------------------------- Interfaces utilisees
+//---------------------------------------------------------------- INCLUDE
 
-//------------------------------------------------------------- Constantes 
+//-------------------------------------------------------- Include systeme
+using namespace std;
+#include <iostream>
 
-//------------------------------------------------------------------ Types 
+//------------------------------------------------------ Include personnel
+#include "Top10.h"
 
-//------------------------------------------------------------------------ 
-// Role de la classe <Top10>
-//
-//
-//------------------------------------------------------------------------ 
+//------------------------------------------------------------- Constantes
 
-class Top10
-{
-//----------------------------------------------------------------- PUBLIC
-
-public:
-//----------------------------------------------------- Methodes publiques
-    // type Methode ( liste de parametres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-
-//------------------------------------------------- Surcharge d'operateurs
-    Top10 & operator = ( const Top10 & unTop10 );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-
-//-------------------------------------------- Constructeurs - destructeur
-    Top10 ( const Top10 & unTop10 );
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
-    Top10 ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-    virtual ~Top10 ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-//------------------------------------------------------------------ PRIVE 
-
-protected:
-//----------------------------------------------------- Methodes protegees
-
-private:
-//------------------------------------------------------- Methodes privees
-
-protected:
-//----------------------------------------------------- Attributs proteges
-
-private:
-//------------------------------------------------------- Attributs prives
-
-//---------------------------------------------------------- Classes amies
-
-//-------------------------------------------------------- Classes privees
+//---------------------------------------------------- Variables de classe
 
 //----------------------------------------------------------- Types prives
 
-};
 
-//----------------------------------------- Types dependants de <Top10>
+//----------------------------------------------------------------- PUBLIC
+//-------------------------------------------------------- Fonctions amies
 
-#endif // XXX_H
+//----------------------------------------------------- Methodes publiques
+// type Top10::Methode ( liste de parametres )
+// Algorithme :
+//
+//{
+//} //----- Fin de Methode
+
+
+//------------------------------------------------- Surcharge d'operateurs
+Top10 & Top10::operator = ( const Top10 & unTop10 )
+// Algorithme :
+//
+{
+} //----- Fin de operator =
+
+
+//-------------------------------------------- Constructeurs - destructeur
+Top10::Top10 ( const Top10 & unTop10 )
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au constructeur de copie de <Top10>" << endl;
+#endif
+} //----- Fin de Top10 (constructeur de copie)
+
+
+Top10::Top10 ( )
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au constructeur de <${Top10}>" << endl;
+#endif
+} //----- Fin de Top10
+
+
+Top10::~Top10 ( )
+// Algorithme :
+//
+{
+#ifdef MAP
+    cout << "Appel au destructeur de <file_bas}>" << endl;
+#endif
+} //----- Fin de ~Top10
+
+
+//------------------------------------------------------------------ PRIVE
+
+//----------------------------------------------------- Methodes protegees
+
+//------------------------------------------------------- Methodes privees
