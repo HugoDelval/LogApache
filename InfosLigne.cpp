@@ -11,14 +11,15 @@ copyright            : (C) ${year} par ${user}
 
 //-------------------------------------------------------- Include systeme
 using namespace std;
-#include <iostream>
 
 //------------------------------------------------------ Include personnel
 #include "InfosLigne.h"
 
 //------------------------------------------------------------- Constantes
-static const char SEP1='1';
-static const char SEP2='-';
+static const char SEP1='/';
+static const char SEP2='[';
+static const char SEP3=']';
+static const char SEP4=':';
 //---------------------------------------------------- Variables de classe
 
 //----------------------------------------------------------- Types prives
@@ -70,6 +71,10 @@ string InfosLigne::GetNavigateur() const {
     return navigateur;
 }
 
+int InfosLigne::GetQuantiteTransferee() const {
+    return quantiteTransferee;
+}
+
 
 // type InfosLigne::Methode ( liste de parametres )
 // Algorithme :
@@ -82,13 +87,27 @@ string InfosLigne::GetNavigateur() const {
 
 istream & operator>>(istream &is, InfosLigne &ligne)
 {
-    string chaineDate;
+    string jour;
+    string mois;
+    string annee;
+    string heure;
+    string minute;
+    string seconde;
     string chaineStatus;
     string chaineQuantiteTransferee;
+    string poubelle;
+
     getline(is,ligne.addresseIP);
     getline(is,ligne.user);
     getline(is,ligne.logName);
-    getline(is,chaineDate);
+    getline(is,poubelle,SEP2);
+    getline(is,jour,SEP1);
+    getline(is,mois,SEP1);
+    getline(is,annee, SEP1);
+    getline(is,poubelle,SEP4);
+    getline(is,heure,SEP4);
+    getline(is,minute,SEP4);
+    getline(is,seconde,);
     getline(is,ligne.action);
     getline(is,ligne.protocole);
     getline(is,ligne.urlDemandee);
@@ -97,8 +116,15 @@ istream & operator>>(istream &is, InfosLigne &ligne)
     getline(is,ligne.urlReferent);
     getline(is,ligne.navigateur);
 
-    //par defaut \n
+    ligne.date.tm_mday= stoi(jour);
+    ligne.date.tm_mon= stoi(mois);
+    ligne.date.tm_year=stoi(annee);
+    ligne.date.tm_hour=stoi(heure);
+    ligne.date.tm_min= stoi(minute);
+    ligne.date.tm_sec= stoi(seconde);
 
+    ligne.status=stoi(chaineStatus);
+    ligne.quantiteTransferee=stoi(chaineQuantiteTransferee);
     return is;
 } //----- Fin de operator >>
 

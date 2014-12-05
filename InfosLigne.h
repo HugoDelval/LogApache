@@ -13,6 +13,7 @@ copyright            : (C) year par user
 #include <string.h>
 #include <time.h>
 #include <iostream>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -40,7 +41,7 @@ public:
     string GetProtocole()const;
     string GetUrlDemandee()const;
     int GetStatus()const;
-    int GetquantiteTransferee()const;
+    int GetQuantiteTransferee()const;
     string GetUrlReferent()const;
     string GetNavigateur()const;
 
@@ -103,8 +104,6 @@ private:
     int status;
     int quantiteTransferee;
     string urlReferent;
-
-private:
     string navigateur;
 //---------------------------------------------------------- Classes amies
 
