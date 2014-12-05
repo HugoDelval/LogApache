@@ -21,17 +21,18 @@ copyright            : (C) year par user
 //
 //------------------------------------------------------------------------ 
 
-class Log : public Ancetre
+class Log
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Methodes publiques
-    // type Methode ( liste de parametres );
+
     // Mode d'emploi :
     //
     // Contrat :
     //
+
 
 
 //------------------------------------------------- Surcharge d'operateurs

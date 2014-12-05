@@ -1,54 +1,33 @@
 /*************************************************************************
-Log  -  description
+InfosLigne  -  description
 -------------------
 debut                : date
 copyright            : (C) year par user
 *************************************************************************/
 
-//---------- Interface de la classe <Log> (fichier Log.h) ------
+//---------- Interface de la classe <InfosLigne> (fichier InfosLigne.h) ------
 #if ! defined ( XXX_H )
 #define XXX_H
 
 //--------------------------------------------------- Interfaces utilisees
-#include <string.h>
-#include <time.h>
-#include <list>
-//------------------------------------------------------------- Constantes
 
-//------------------------------------------------------------------ Types
+//------------------------------------------------------------- Constantes 
 
-typedef struct AVLTreeNode* ptrOnAVLTreeNode;
+//------------------------------------------------------------------ Types 
 
-//------------------------------------------------------------------------
-// Role de la classe <Log>
+//------------------------------------------------------------------------ 
+// Role de la classe <InfosLigne>
 //
 //
-//------------------------------------------------------------------------
+//------------------------------------------------------------------------ 
 
-class Log
+class InfosLigne : public Ancetre
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Methodes publiques
-    // void Log::LireFichier ();
-
-    void Annuaire::Ajouter(const string &nomFich)
-    {
-        ifstream file(nomFich.c_str());
-        Abonne a;
-        if(file.good())
-        {
-            while(file>>a)
-            {
-                Ajouter(a);
-            }
-        }
-        else
-        {
-            cout<<"Erreur, fichier \""<<nomFich<<"\" introuvable."<<endl;
-        }
-    }
+    // type Methode ( liste de parametres );
     // Mode d'emploi :
     //
     // Contrat :
@@ -56,7 +35,7 @@ public:
 
 
 //------------------------------------------------- Surcharge d'operateurs
-    Log & operator = ( const Log & unLog );
+    InfosLigne & operator = ( const InfosLigne & unInfosLigne );
     // Mode d'emploi :
     //
     // Contrat :
@@ -64,25 +43,26 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    Log ( const Log & unLog );
+    InfosLigne ( const InfosLigne & unInfosLigne );
+
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    Log ( );
+    InfosLigne ( );
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~Log ( );
+    virtual ~InfosLigne ( );
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-//------------------------------------------------------------------ PRIVE
+//------------------------------------------------------------------ PRIVE 
 
 protected:
 //----------------------------------------------------- Methodes protegees
@@ -95,7 +75,19 @@ protected:
 
 private:
 //------------------------------------------------------- Attributs prives
-    list<DonneesLigne> listeLignes;
+    string addresseIP;
+    string user;
+    string logName;
+    time_t date;
+    string action;
+    string protocole;
+    string urlDemandee;
+    string status;
+    int quantiteeTransferee;
+    string urlReferent;
+
+private:
+    string navigateur;
 //---------------------------------------------------------- Classes amies
 
 //-------------------------------------------------------- Classes privees
@@ -104,6 +96,6 @@ private:
 
 };
 
-//----------------------------------------- Types dependants de <Log>
+//----------------------------------------- Types dependants de <InfosLigne>
 
 #endif // XXX_H
