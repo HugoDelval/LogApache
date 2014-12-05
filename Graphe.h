@@ -5,7 +5,7 @@ debut                : 04/12/2014
 copyright            : (C) 2014 par PAPIN/DELVAL
 *************************************************************************/
 
-//---------- Interface de la classe <Graphe> (fichier Graphe.cpp) ------
+//---------- Interface de la classe <Graphe> (fichier Graphe.h) ------
 #if ! defined ( GRAPHE_H )
 #define GRAPHE_H
 

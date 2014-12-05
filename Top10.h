@@ -5,7 +5,7 @@ debut                : 04/12/2014
 copyright            : (C) 2014 par PAPIN/DELVAL
 *************************************************************************/
 
-//---------- Interface de la classe <Top10> (fichier Top10.cpp) ------
+//---------- Interface de la classe <Top10> (fichier Top10.h) ------
 #if ! defined ( TOP10_H )
 #define TOP10_H
 
