@@ -35,9 +35,6 @@ public:
     //
 
     list<InfosLigne> GetListeLignes() const;
-
-//------------------------------------------------- Surcharge d'operateurs
-    Log &operator=(const Log &unLog);
     // Mode d'emploi :
     //
     // Contrat :
@@ -45,12 +42,6 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    Log(const Log &unLog);
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
-
 
     virtual ~Log();
     // Mode d'emploi :

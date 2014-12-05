@@ -40,11 +40,6 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    Graphe ( const Graphe & unGraphe );
-    // Mode d'emploi (constructeur de copie) :
-    //      ne sert pour l'instant qu'a interdire le constructeur de copie (pas d'implementation dans le .cpp)
-    // Contrat :
-    //
 
     Graphe (Log &unLog, int typeCommande=0 );
     // Mode d'emploi :
