@@ -10,18 +10,21 @@ copyright            : (C) 2014 par PAPIN/DELVAL
 
 //--------------------------------------------------- Interfaces utilisees
 #include <string.h>
+using namespace std;
 //------------------------------------------------------------------ Types
 struct Document {
     string NomDocument;
     int NbAcces;
-    Document(string nom="nomParDefaut", int nb=0):NomDocument(nom), NbAcces(nb){}
+    Document(string nom="nomParDefaut", int nb=0):
+            NomDocument(nom), NbAcces(nb){}
 };
 struct Arc {
     string IdArc;
     int NbParcours;
     Document Refer;
     Document Cible;
-    Arc(Document ref, Document cib, int nb=0, string id):Refer(ref), Cible(cib), NbParcours(nb), IdArc(id){}
+    Arc(Document ref, Document cib, int nb=0, string id=""):
+            Refer(ref), Cible(cib), NbParcours(nb), IdArc(id){}
 
 };
 //------------------------------------------------------------------------
