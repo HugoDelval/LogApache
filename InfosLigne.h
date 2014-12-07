@@ -46,7 +46,6 @@ public:
     string GetUrlReferent()const;
     string GetNavigateur()const;
 
-    friend istream & operator>>(istream &is, InfosLigne &ligne);
 
     // Mode d'emploi :
     //
@@ -63,10 +62,7 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    // Mode d'emploi (constructeur de copie) :
-    //
-    // Contrat :
-    //
+    InfosLigne ();
 
     InfosLigne ( string addresseIPLigne,string userLigne,string logNameLigne, string actionLigne,
             string protocoleLigne, string urlDemandeeLigne, int statusLigne, string diffGTMLigne,
@@ -108,6 +104,8 @@ private:
     string urlReferent;
     string navigateur;
 //---------------------------------------------------------- Classes amies
+friend istream & operator>>(istream &is, InfosLigne &ligne);
+friend class Log;
 
 //-------------------------------------------------------- Classes privees
 

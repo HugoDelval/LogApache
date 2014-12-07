@@ -140,7 +140,9 @@ istream & operator>>(istream &is, InfosLigne &ligne)
 
 
 //-------------------------------------------- Constructeurs - destructeur
-
+InfosLigne::InfosLigne ()
+{
+}
 
 InfosLigne::InfosLigne ( string addresseIPLigne,string userLigne,string logNameLigne, string actionLigne,
                 string protocoleLigne, string urlDemandeeLigne, int statusLigne, string diffGTMLigne,

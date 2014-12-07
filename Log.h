@@ -41,7 +41,7 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    Log(ifstream& file);
+    Log(istream& file);
 
     virtual ~Log();
     // Mode d'emploi :

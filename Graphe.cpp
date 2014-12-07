@@ -210,7 +210,6 @@ bool compareDocuments(const Document* first, const Document* second)
 
 void Graphe::afficherTop10()
 {
-
     listeDocTrieeSelonVisites.sort(compareDocuments);
     unsigned long N = 9L;
     if (listeDocTrieeSelonVisites.size() <= N)
@@ -225,5 +224,4 @@ void Graphe::afficherTop10()
         docTop10 = *it;
         cout<<docTop10->NomDocument<<" ("<<docTop10->NbAcces<<" hits)"<<endl;
     }
-
 }
