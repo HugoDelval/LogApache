@@ -80,7 +80,9 @@ void Graphe::initialiserGraphe(Log &unLog, int heure, bool xFlag, bool fichierDo
     string ref="";
     string cib="";
     int num=0;
-    for (list<InfosLigne>::const_iterator ci = leFichierLog.begin(); ci != leFichierLog.end(); ++ci)
+
+    //cout<<leFichierLog.size()<<endl;
+    for (list<InfosLigne>::iterator ci = leFichierLog.begin(); ci != leFichierLog.end(); ++ci)
     {
         cib=nettoyer(ci->GetUrlDemandee());
         // si la ligne est compatible avec les filtres qu'a demande l'utilisateur alors on ajoute la ligne aux structures de donnees
@@ -224,4 +226,8 @@ void Graphe::afficherTop10()
         docTop10 = *it;
         cout<<docTop10->NomDocument<<" ("<<docTop10->NbAcces<<" hits)"<<endl;
     }
+    it=listeDocTrieeSelonVisites.begin();
+    docTop10 = *it;
+    cout<<docTop10->NomDocument<<" ("<<docTop10->NbAcces<<" hits)"<<endl;
+
 }

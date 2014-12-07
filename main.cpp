@@ -98,7 +98,7 @@ static int executeApplication(int argc, char* argv[])
             }
             if(gFlag)
             {
-                string nomFichierDot(argv[optind]);
+                string nomFichierDot(argGFlag);
                 ofstream fileDot(nomFichierDot.c_str());
                 if(fileDot.good())
                 {

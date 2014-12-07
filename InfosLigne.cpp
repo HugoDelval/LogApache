@@ -102,9 +102,9 @@ istream & operator>>(istream &is, InfosLigne &ligne)
     string chaineQuantiteTransferee;
     string poubelle;
 
-    getline(is,ligne.addresseIP);
-    getline(is,ligne.user);
-    getline(is,ligne.logName);
+    getline(is,ligne.addresseIP,' ');
+    getline(is,ligne.user,' ');
+    getline(is,ligne.logName,' ');
     getline(is,poubelle,SEP2);
     getline(is,jour,SEP1);
     getline(is,mois,SEP1);
@@ -112,18 +112,20 @@ istream & operator>>(istream &is, InfosLigne &ligne)
     getline(is,poubelle,SEP4);
     getline(is,heure,SEP4);
     getline(is,minute,SEP4);
-    getline(is,seconde);
+    getline(is,seconde,' ');
     getline(is,ligne.diffGTM, SEP3);
     getline(is,poubelle,SEP5);
-    getline(is,ligne.action);
-    getline(is,ligne.urlDemandee,SEP5);
-    getline(is,chaineStatus);
-    getline(is,chaineQuantiteTransferee);
+    getline(is,ligne.action,' ');
+    getline(is,ligne.urlDemandee,' ');
+    getline(is,ligne.protocole,SEP5);
+    getline(is,poubelle,' ');
+    getline(is,chaineStatus,' ');
+    getline(is,chaineQuantiteTransferee,' ');
     getline(is,poubelle,SEP5);
-    getline(is,ligne.protocole,SEP4);
     getline(is,ligne.urlReferent,SEP5);
     getline(is,poubelle,SEP5);
     getline(is,ligne.navigateur,SEP5);
+    getline(is, poubelle);
 
     ligne.date.tm_mday= atoi(jour.c_str());
     ligne.date.tm_mon= atoi(mois.c_str());
@@ -134,6 +136,7 @@ istream & operator>>(istream &is, InfosLigne &ligne)
 
     ligne.status=atoi(chaineStatus.c_str());
     ligne.quantiteTransferee=atoi(chaineQuantiteTransferee.c_str());
+
 
     return is;
 } //----- Fin de operator >>
