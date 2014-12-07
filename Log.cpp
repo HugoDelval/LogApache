@@ -45,7 +45,7 @@ list<InfosLigne> Log::GetListeLignes() const
 
 Log::Log(ifstream& file)
 {
-/*    InfosLigne i;
+/*  InfosLigne i;
     while(file>>i)
     {
         listeLignes.insert(i);

@@ -20,6 +20,7 @@ static const char SEP1='/';
 static const char SEP2='[';
 static const char SEP3=']';
 static const char SEP4=':';
+static const char SEP5='"';
 //---------------------------------------------------- Variables de classe
 
 //----------------------------------------------------------- Types prives
@@ -44,6 +45,10 @@ string InfosLigne::GetLogName() const {
 
 tm InfosLigne::Getdate() const {
     return date;
+}
+
+string InfosLigne::GetDiffGTM() const {
+    return diffGTM;
 }
 
 string InfosLigne::GetAction() const {
@@ -108,13 +113,17 @@ istream & operator>>(istream &is, InfosLigne &ligne)
     getline(is,heure,SEP4);
     getline(is,minute,SEP4);
     getline(is,seconde);
+    getline(is,ligne.diffGTM, SEP3);
+    getline(is,poubelle,SEP5);
     getline(is,ligne.action);
-    getline(is,ligne.protocole);
-    getline(is,ligne.urlDemandee);
+    getline(is,ligne.urlDemandee,SEP5);
     getline(is,chaineStatus);
     getline(is,chaineQuantiteTransferee);
-    getline(is,ligne.urlReferent);
-    getline(is,ligne.navigateur);
+    getline(is,poubelle,SEP5);
+    getline(is,ligne.protocole,SEP4);
+    getline(is,ligne.urlReferent,SEP5);
+    getline(is,poubelle,SEP5);
+    getline(is,ligne.navigateur,SEP5);
 
     ligne.date.tm_mday= atoi(jour.c_str());
     ligne.date.tm_mon= atoi(mois.c_str());
@@ -125,6 +134,7 @@ istream & operator>>(istream &is, InfosLigne &ligne)
 
     ligne.status=atoi(chaineStatus.c_str());
     ligne.quantiteTransferee=atoi(chaineQuantiteTransferee.c_str());
+
     return is;
 } //----- Fin de operator >>
 
@@ -133,13 +143,14 @@ istream & operator>>(istream &is, InfosLigne &ligne)
 
 
 InfosLigne::InfosLigne ( string addresseIPLigne,string userLigne,string logNameLigne, string actionLigne,
-                string protocoleLigne, string urlDemandeeLigne, int statusLigne,
+                string protocoleLigne, string urlDemandeeLigne, int statusLigne, string diffGTMLigne,
                     string urlReferentLigne, string navigateurLigne, int quantiteTransfereeLigne,tm dateLigne )
 {
     addresseIP=addresseIPLigne;
     user=userLigne;
     logName=logNameLigne;
     date=dateLigne;
+    diffGTM=diffGTMLigne;
     action=actionLigne;
     protocole=protocoleLigne;
     urlDemandee=urlDemandeeLigne;

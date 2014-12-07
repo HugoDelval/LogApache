@@ -28,7 +28,6 @@ class Log {
 
 public:
 //----------------------------------------------------- Methodes publiques
-    // void Log::LireFichier ();
     // Mode d'emploi :
     //
     // Contrat :

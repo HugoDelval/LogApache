@@ -37,6 +37,7 @@ public:
     string GetUser()const;
     string GetLogName()const;
     tm Getdate()const;
+    string GetDiffGTM()const;
     string GetAction()const;
     string GetProtocole()const;
     string GetUrlDemandee()const;
@@ -68,7 +69,7 @@ public:
     //
 
     InfosLigne ( string addresseIPLigne,string userLigne,string logNameLigne, string actionLigne,
-            string protocoleLigne, string urlDemandeeLigne, int statusLigne,
+            string protocoleLigne, string urlDemandeeLigne, int statusLigne, string diffGTMLigne,
             string urlReferentLigne, string navigateurLigne, int quantiteTransfereeLigne,tm dateLigne);
     // Mode d'emploi :
     //
@@ -98,6 +99,7 @@ private:
     string user;
     string logName;
     tm date;
+    string diffGTM;
     string action;
     string protocole;
     string urlDemandee;
