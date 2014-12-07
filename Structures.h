@@ -12,20 +12,22 @@ copyright            : (C) 2014 par PAPIN/DELVAL
 #include <string.h>
 
 //------------------------------------------------------------------ Types
-struct Document {
+struct Document
+{
     std::string NomDocument;
     int NbAcces;
-    Document(std::string nom="nomParDefaut", int nb=0):
-            NomDocument(nom), NbAcces(nb){}
+    int NumNoeud;
+    Document(int num, std::string nom="nomParDefaut", int nb=1):
+            NumNoeud(num), NomDocument(nom), NbAcces(nb){}
 };
-struct Arc {
+struct Arc
+{
     std::string IdArc;
     int NbParcours;
-    Document Refer;
-    Document Cible;
-    Arc(Document ref, Document cib, int nb=0, std::string id=""):
+    Document* Refer;
+    Document* Cible;
+    Arc(Document* ref, Document* cib, int nb=1, std::string id=""):
             Refer(ref), Cible(cib), NbParcours(nb), IdArc(id){}
-
 };
 //------------------------------------------------------------------------
 

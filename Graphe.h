@@ -15,7 +15,6 @@ copyright            : (C) 2014 par PAPIN/DELVAL
 #include <string>
 #include <iostream>
 #include "Log.h"
-#include "Top10.h"
 #include "Structures.h"
 //------------------------------------------------------------- Constantes
 
@@ -42,7 +41,7 @@ public:
 
 //-------------------------------------------- Constructeurs - destructeur
 
-    Graphe (Log &unLog, int heure, bool xFlag=false, ostream& direction=cout);
+    Graphe (string bUrl, Log &unLog, int heure, bool xFlag=false, ostream& direction=cout, bool fichierDot=false);
     // Mode d'emploi :
     //      construit un objet Graphe grace aux infos contenus dans le Log, selectionne et traite les infos interessantes
     // Contrat :
@@ -58,15 +57,23 @@ public:
 
 private:
 //------------------------------------------------------- Methodes privees
-
+    void initialiserGraphe(Log &unLog, int heure, bool xFlag, bool fichierDot);
+    string nettoyer(string stringANettoyer);
+    void genererFichier(ostream &direction);
+    bool xFlagCompatible(string cib);
+    void afficherTop10();
 
 private:
 //------------------------------------------------------- Attributs prives
-    typedef map<string, Arc*> DicoIdArc;     // id, arc
-    typedef set<string> EnsembleLabel;       // label, pour verifier si le noeud a deja ete insere dans le fichier (utile seulement quand on rempli un fichier)
+    typedef map<string, Arc> DicoIdArc;      // id, arc
+    typedef set<int> EnsembleNumNoeud;       // label, pour verifier si le noeud a deja ete insere dans le fichier (utile seulement quand on rempli un fichier)
+    typedef map<string, Document*> DicoNomDocument;
+    typedef list<Document*> ListeDoc;
     DicoIdArc dicoIdArc;
-    EnsembleLabel traceLabels;
-    Top10 *monTop10;
+    EnsembleNumNoeud traceLabels;
+    string baseUrl;
+    DicoNomDocument dicoNomDoc;
+    ListeDoc listeDocTrieeSelonVisites;
 
 //---------------------------------------------------------- Classes amies
 

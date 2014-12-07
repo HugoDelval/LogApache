@@ -12,6 +12,29 @@ const int FICHIER_LOG_INTROUVABLE =2;
 const int TROP_ARGUMENTS=3;
 const int ARG_HEURE_NON_VALIDE=4;
 const int FICHIER_DOT_NON_MODIFIABLE=5;
+const string DIRECTION_FICHIER="config.conf";
+
+static string getBaseUrl()
+{
+    ifstream fileConfig(DIRECTION_FICHIER);
+    string res="";
+    if(fileConfig.good())
+    {
+        getline(fileConfig, res);
+    }
+    else
+    {
+        cout<<endl;
+        cout<<"Erreur, le fichier de config a été déplacé, supprimé ou vous n'avez plus les droits en lecture dessus."<<endl;
+        cout<<"Ce fichier doit contenir l'url de base de votre site web suivit d'un retour chariot ex : "<<endl;
+        cout<<"http://monsupersiteweb.com"<<endl;
+        cout<<endl;
+        cout<<"Ce fichier doit être dans le même dossier que l'exécutable et doit se nommer \""<<DIRECTION_FICHIER<<"\"."<<endl;
+        cout<<"Pour plus d'informations sur le fonctionnement de cette application, vous pouvez vous reporter au README.txt"<<endl;
+        exit(1);
+    }
+    return res;
+}
 
 static int executeApplication(int argc, char* argv[])
 {
@@ -58,6 +81,7 @@ static int executeApplication(int argc, char* argv[])
             //on peut commencer le traitement
             Log monLog(file);
             int heure=-1;
+            string baseUrl=getBaseUrl();
             if(tFlag)
             {
                 try {
@@ -66,7 +90,7 @@ static int executeApplication(int argc, char* argv[])
                     heure=-1;
                     res=ARG_HEURE_NON_VALIDE;
                 }
-                if(heure>23 || heure<-1)
+                if(heure>23 || heure<-1 || (heure==0 && argTFlag.compare("0")!=0) )
                 {
                     heure=-1;
                     res=ARG_HEURE_NON_VALIDE;
@@ -78,7 +102,7 @@ static int executeApplication(int argc, char* argv[])
                 ofstream fileDot(nomFichierDot.c_str());
                 if(fileDot.good())
                 {
-                    Graphe monGraphe(monLog,xFlag,heure,fileDot);
+                    Graphe monGraphe(baseUrl,monLog,xFlag,heure,fileDot,true);
                 }
                 else
                 {
@@ -87,7 +111,7 @@ static int executeApplication(int argc, char* argv[])
             }
             else
             {
-                Graphe monGraphe(monLog,xFlag,heure);
+                Graphe monGraphe(baseUrl,monLog,xFlag,heure);
             }
         }
         else

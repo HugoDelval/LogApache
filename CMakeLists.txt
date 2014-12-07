@@ -3,5 +3,5 @@ project(LogApache)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-set(SOURCE_FILES main.cpp Top10.cpp Graphe.cpp InfosLigne.cpp Log.cpp Structures.h)
+set(SOURCE_FILES main.cpp Graphe.cpp InfosLigne.cpp Log.cpp Structures.h)
 add_executable(LogApache ${SOURCE_FILES})
