@@ -79,14 +79,14 @@ void Graphe::initialiserGraphe(Log &unLog, int heure, bool xFlag, bool fichierDo
     string id="";
     string ref="";
     string cib="";
-int num=0;
+
     //cout<<leFichierLog.size()<<endl;
     for (list<InfosLigne>::iterator ci = leFichierLog.begin(); ci != leFichierLog.end(); ++ci)
     {
+        cib=nettoyer(ci->GetUrlDemandee());
         // si la ligne est compatible avec les filtres qu'a demande l'utilisateur alors on ajoute la ligne aux structures de donnees
         if( (!xFlag || xFlagCompatible(cib)) && (heure==-1 || ci->GetDate().tm_hour==heure) )
         {
-            cib=nettoyer(ci->GetUrlDemandee());
             ref=nettoyer(ci->GetUrlReferent());
             if(fichierDot)
             {
