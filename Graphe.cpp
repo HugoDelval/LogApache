@@ -213,7 +213,7 @@ void Graphe::afficherTop10()
     Document* docTop10;
     ListeDoc::iterator it = listeDocTrieeSelonVisites.begin();
     int numero=1;
-    while(numero<=10)
+    while(numero<=10 && it!=listeDocTrieeSelonVisites.end())
     {
         docTop10 = *it;
         cout<<docTop10->NomDocument<<" ("<<docTop10->NbAcces<<" hits)"<<endl;
