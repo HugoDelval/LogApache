@@ -21,6 +21,7 @@ static const char SEP2='[';
 static const char SEP3=']';
 static const char SEP4=':';
 static const char SEP5='"';
+
 //---------------------------------------------------- Variables de classe
 
 //----------------------------------------------------------- Types prives
@@ -30,6 +31,7 @@ static const char SEP5='"';
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Methodes publiques
+
 string InfosLigne::GetAddresseIP() const{
     return addresseIP;
 }
@@ -43,7 +45,7 @@ string InfosLigne::GetLogName() const {
 }
 
 
-tm InfosLigne::Getdate() const {
+tm InfosLigne::GetDate() const {
     return date;
 }
 

@@ -36,7 +36,7 @@ public:
     string GetAddresseIP() const;
     string GetUser()const;
     string GetLogName()const;
-    tm Getdate()const;
+    tm GetDate()const;
     string GetDiffGTM()const;
     string GetAction()const;
     string GetProtocole()const;

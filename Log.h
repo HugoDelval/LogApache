@@ -12,6 +12,8 @@ copyright            : (C) year par user
 //--------------------------------------------------- Interfaces utilisees
 #include <time.h>
 #include <list>
+#include <iostream>
+#include <fstream>
 #include "InfosLigne.h"
 //------------------------------------------------------------- Constantes
 
