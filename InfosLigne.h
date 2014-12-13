@@ -1,8 +1,8 @@
 /*************************************************************************
 InfosLigne  -  description
 -------------------
-debut                : date
-copyright            : (C) year par user
+debut                : 04/12/2014
+copyright            : (C) 2014 par PAPIN/DELVAL
 *************************************************************************/
 
 //---------- Interface de la classe <InfosLigne> (fichier InfosLigne.h) ------
