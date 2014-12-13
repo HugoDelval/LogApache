@@ -16,9 +16,8 @@ struct Document
 {
     std::string NomDocument;
     int NbAcces;
-    int NumNoeud;
-    Document(int num, std::string nom="nomParDefaut", int nb=1):
-            NumNoeud(num), NomDocument(nom), NbAcces(nb){}
+    Document(std::string nom="nomParDefaut", int nb=1):
+            NomDocument(nom), NbAcces(nb){}
 };
 struct Arc
 {

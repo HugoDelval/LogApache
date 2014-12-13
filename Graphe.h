@@ -66,11 +66,9 @@ private:
 private:
 //------------------------------------------------------- Attributs prives
     typedef map<string, Arc> DicoIdArc;      // id, arc
-    typedef set<int> EnsembleNumNoeud;       // label, pour verifier si le noeud a deja ete insere dans le fichier (utile seulement quand on rempli un fichier)
     typedef map<string, Document*> DicoNomDocument;
     typedef list<Document*> ListeDoc;
     DicoIdArc dicoIdArc;
-    EnsembleNumNoeud traceLabels;
     string baseUrl;
     DicoNomDocument dicoNomDoc;
     ListeDoc listeDocTrieeSelonVisites;

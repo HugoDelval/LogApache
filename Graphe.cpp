@@ -79,18 +79,17 @@ void Graphe::initialiserGraphe(Log &unLog, int heure, bool xFlag, bool fichierDo
     string id="";
     string ref="";
     string cib="";
-    int num=0;
-
+int num=0;
     //cout<<leFichierLog.size()<<endl;
     for (list<InfosLigne>::iterator ci = leFichierLog.begin(); ci != leFichierLog.end(); ++ci)
     {
-        cib=nettoyer(ci->GetUrlDemandee());
         // si la ligne est compatible avec les filtres qu'a demande l'utilisateur alors on ajoute la ligne aux structures de donnees
-        if( (!xFlag || xFlagCompatible(cib)) && (heure==-1 || ci->Getdate().tm_hour==heure) )
+        if( (!xFlag || xFlagCompatible(cib)) && (heure==-1 || ci->GetDate().tm_hour==heure) )
         {
+            cib=nettoyer(ci->GetUrlDemandee());
+            ref=nettoyer(ci->GetUrlReferent());
             if(fichierDot)
             {
-                ref=nettoyer(ci->GetUrlReferent());
                 id=ref + cib;
                 //chercher l'id dans la map
                 DicoIdArc::iterator it = dicoIdArc.find(id);
@@ -102,10 +101,8 @@ void Graphe::initialiserGraphe(Log &unLog, int heure, bool xFlag, bool fichierDo
                 else
                 {
                     //sinon on l'ajoute avec nbParcours=1 en creant les deux documents
-                    Document* cible=new Document(num,cib,1);
-                    num++;
-                    Document* referent=new Document(num,ref,1);
-                    num++;
+                    Document* cible=new Document(cib,1);
+                    Document* referent=new Document(ref,1);
                     Arc arc(referent,cible,1,id);
                     dicoIdArc.insert(make_pair(id, arc));
                 }
@@ -119,7 +116,7 @@ void Graphe::initialiserGraphe(Log &unLog, int heure, bool xFlag, bool fichierDo
             else
             {
                 //sinon on l'ajoute avec NbAcces=1 et un identifiant quelconque (-1) car il ne sera paas utilise
-                Document* cible=new Document(-1,cib,1);
+                Document* cible=new Document(cib,1);
                 dicoNomDoc.insert(make_pair(cib, cible));
                 listeDocTrieeSelonVisites.push_back(cible); //complexite en O(1)
             }
@@ -134,8 +131,10 @@ string Graphe::nettoyer(string stringANettoyer)
     size_t start_pos_base = stringANettoyer.find(baseUrl);
 
     // on supprime l'url de base
-    if(start_pos_base != string::npos)
-        stringANettoyer.replace(start_pos_base, stringANettoyer.length(), to);
+    if(start_pos_base!=string::npos)
+    {
+        stringANettoyer.replace(start_pos_base, baseUrl.length(), to);
+    }
 
     // on supprime tout apres le diese
     string::size_type pos = stringANettoyer.find('#');
@@ -147,6 +146,14 @@ string Graphe::nettoyer(string stringANettoyer)
     if (pos != string::npos)
         stringANettoyer=stringANettoyer.substr(0, pos);
 
+    // on supprime tout apres le point d'interrogation
+    pos = stringANettoyer.find(';');
+    if (pos != string::npos)
+        stringANettoyer=stringANettoyer.substr(0, pos);
+
+    while(stringANettoyer.back() == '/')
+        stringANettoyer=stringANettoyer.substr(0, stringANettoyer.size()-1);
+
     return stringANettoyer;
 }
 
@@ -154,7 +161,7 @@ void Graphe::genererFichier(ostream &direction)
 {
     if(direction.good())
     {
-        direction<<"diagraph {"<<endl;
+        direction<<"digraph {"<<endl;
         string labelC="";
         string labelR="";
         int numC=-1;
@@ -163,23 +170,7 @@ void Graphe::genererFichier(ostream &direction)
         {
             labelC=it->second.Cible->NomDocument;
             labelR=it->second.Refer->NomDocument;
-            numC=it->second.Cible->NumNoeud;
-            numR=it->second.Refer->NumNoeud;
-            EnsembleNumNoeud::const_iterator it_label_cible = traceLabels.find(numC);
-            EnsembleNumNoeud::const_iterator it_label_ref = traceLabels.find(numR);
-            if(it_label_cible==traceLabels.end())
-            {
-                // il n'existe pas = ajout au traceLabels + ajout au graphe
-                traceLabels.insert(numC);
-                direction<<"node"<<numC<<" [label=\""<<labelC<<"\"];"<<endl;
-            }
-           if(it_label_ref!=traceLabels.end())
-            {
-                // il n'existe pas = ajout au traceLabels + ajout au graphe
-                traceLabels.insert(numR);
-                direction<<"node"<<numR<<" [label=\""<<labelR<<"\"];"<<endl;
-            }
-            direction<<"node"<<numR<<" -> node"<<numC<<" [label=\""<<it->second.NbParcours<<"\"];"<<endl;
+            direction<<'"'<<labelR<<"\" -> \""<<labelC<<"\" [label=\""<<it->second.NbParcours<<"\"];"<<endl;
         }
         direction<<"}"<<endl;
     }
@@ -193,21 +184,22 @@ void Graphe::genererFichier(ostream &direction)
 bool Graphe::xFlagCompatible(string cib)
 {
     bool res=true;
-    string extension=cib.substr(cib.find_last_of(".") + 1);
     //si l'extension correspond a un fichier css ou js ou un des formats d'image relativement assez connus
-    if(extension.compare("css")==0 || extension.compare("js")==0 ||
-                extension.compare("jpg")==0 || extension.compare("jpeg")==0 ||
-                extension.compare("gif")==0 || extension.compare("png")==0 ||
-                extension.compare("svg")==0 || extension.compare("bmp")==0 || extension.compare("ico")==0)
+    string extensions[] = {"css","js","jpeg","jpg","gif","png","svg","bmp","ico"};
+    int taille=9;
+    for(int i=0 ; i<taille && res; i++)
     {
-        res=false;
+        if(cib.find(extensions[i])!=string::npos)
+        {
+            res=false;
+        }
     }
     return res;
 }
 
 bool compareDocuments(const Document* first, const Document* second)
 {
-    return (first->NbAcces < second->NbAcces) ;
+    return (first->NbAcces > second->NbAcces) ;
 }
 
 void Graphe::afficherTop10()
@@ -220,14 +212,13 @@ void Graphe::afficherTop10()
     }
     Document* docTop10;
     ListeDoc::iterator it = listeDocTrieeSelonVisites.begin();
-    advance(it, N);
-    for(;it!=listeDocTrieeSelonVisites.begin();it--)
+    int numero=1;
+    while(numero<=10)
     {
         docTop10 = *it;
         cout<<docTop10->NomDocument<<" ("<<docTop10->NbAcces<<" hits)"<<endl;
+        it++;
+        numero++;
     }
-    it=listeDocTrieeSelonVisites.begin();
-    docTop10 = *it;
-    cout<<docTop10->NomDocument<<" ("<<docTop10->NbAcces<<" hits)"<<endl;
 
 }
