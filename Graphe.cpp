@@ -1,8 +1,8 @@
 /*************************************************************************
 Graphe  -  description
 -------------------
-debut                : date
-copyright            : (C) ${year} par ${user}
+debut                : 13/12/2014
+copyright            : (C) 2014 par PAPIN/DELVAL
 *************************************************************************/
 
 //---------- Realisation de la classe <Graphe> (fichier Graphe.cpp) --
