@@ -159,28 +159,6 @@ InfosLigne::InfosLigne ()
 {
 }
 
-InfosLigne::InfosLigne ( string addresseIPLigne,string userLigne,string logNameLigne, string actionLigne,
-                string protocoleLigne, string urlDemandeeLigne, int statusLigne, string diffGTMLigne,
-                    string urlReferentLigne, string navigateurLigne, int quantiteTransfereeLigne,tm dateLigne )
-{
-    addresseIP=addresseIPLigne;
-    user=userLigne;
-    logName=logNameLigne;
-    date=dateLigne;
-    diffGTM=diffGTMLigne;
-    action=actionLigne;
-    protocole=protocoleLigne;
-    urlDemandee=urlDemandeeLigne;
-    status=statusLigne;
-    urlReferent=urlReferentLigne;
-    navigateur=navigateurLigne;
-    quantiteTransferee=quantiteTransfereeLigne;
-
-#ifdef MAP
-    cout << "Appel au constructeur de <InfosLigne>" << endl;
-#endif
-} //----- Fin de InfosLigne
-
 
 InfosLigne::~InfosLigne ( )
 // Algorithme :

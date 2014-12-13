@@ -27,19 +27,13 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Methodes publiques
-// type Graphe::Methode ( liste de parametres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Methode
-
 
 
 //-------------------------------------------- Constructeurs - destructeur
 
 Graphe::Graphe (string bUrl, Log &unLog, int heure, bool xFlag, ostream &direction, bool fichierDot )
 // Algorithme :
-//
+// initialise le graphe avec le log et genere le fichier graphe + affiche le top 10
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Graphe>" << endl;
@@ -53,8 +47,6 @@ Graphe::Graphe (string bUrl, Log &unLog, int heure, bool xFlag, ostream &directi
         genererFichier(direction);
     }
     afficherTop10();
-
-
 } //----- Fin de Graphe
 
 
@@ -65,6 +57,13 @@ Graphe::~Graphe ( )
 #ifdef MAP
     cout << "Appel au destructeur de <Graphe>" << endl;
 #endif
+    dicoIdArc.clear();
+    for(DicoNomDocument::iterator i=dicoNomDoc.begin(); i!=dicoNomDoc.end(); ++i)
+    {
+        delete (i->second);
+    }
+    dicoNomDoc.clear();
+    listeDocTrieeSelonVisites.clear();
 } //----- Fin de ~Graphe
 
 
@@ -74,6 +73,9 @@ Graphe::~Graphe ( )
 
 //------------------------------------------------------- Methodes privees
 void Graphe::initialiserGraphe(Log &unLog, int heure, bool xFlag, bool fichierDot)
+// Algorithme :
+// initialise le graphe en lisant le log et en ne selectionnant que les infos correspondantes a l'heure le xFlag
+// remplissage de l'architecture correspondante au dot si fichierDot=true
 {
     list<InfosLigne> leFichierLog = unLog.GetListeLignes();
     string id="";
@@ -126,6 +128,8 @@ void Graphe::initialiserGraphe(Log &unLog, int heure, bool xFlag, bool fichierDo
 }
 
 string Graphe::nettoyer(string stringANettoyer)
+// Algorithme :
+// nettoie l'url : supprime l'url de base et les options etc
 {
     string to="";
     size_t start_pos_base = stringANettoyer.find(baseUrl);
@@ -158,6 +162,8 @@ string Graphe::nettoyer(string stringANettoyer)
 }
 
 void Graphe::genererFichier(ostream &direction)
+// Algorithme :
+// ecrit les informations dans le fichier
 {
     if(direction.good())
     {
@@ -182,6 +188,8 @@ void Graphe::genererFichier(ostream &direction)
 }
 
 bool Graphe::xFlagCompatible(string cib)
+// Algorithme :
+// determine si l'extension est autorisee
 {
     bool res=true;
     //si l'extension correspond a un fichier css ou js ou un des formats d'image relativement assez connus
@@ -203,6 +211,8 @@ bool compareDocuments(const Document* first, const Document* second)
 }
 
 void Graphe::afficherTop10()
+// Algorithme :
+// affiche a la sortie standard le top10 des ressources les plus consultees
 {
     listeDocTrieeSelonVisites.sort(compareDocuments);
     unsigned long N = 9L;

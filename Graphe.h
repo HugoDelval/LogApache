@@ -32,11 +32,6 @@ class Graphe
 
 public:
 //----------------------------------------------------- Methodes publiques
-    // type Methode ( liste de parametres );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -49,7 +44,7 @@ public:
 
     virtual ~Graphe ( );
     // Mode d'emploi :
-    //      detruit le Graphe et tous les objets associes
+    //      detruit le Graphe et tous les objets associes (en faisant attention aux pointeurs)
     // Contrat :
     //
 

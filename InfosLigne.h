@@ -33,6 +33,10 @@ class InfosLigne
 
 public:
 //----------------------------------------------------- Methodes publiques
+
+    /*
+        retourne les informations lues dans le fichier log
+    */
     string GetAddresseIP() const;
     string GetUser()const;
     string GetLogName()const;
@@ -47,36 +51,12 @@ public:
     string GetNavigateur()const;
 
 
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
-
 //------------------------------------------------- Surcharge d'operateurs
-   // istream & operator>>(istream &is, const InfosLigne &ligne);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
 
 //-------------------------------------------- Constructeurs - destructeur
     InfosLigne ();
 
-    InfosLigne ( string addresseIPLigne,string userLigne,string logNameLigne, string actionLigne,
-            string protocoleLigne, string urlDemandeeLigne, int statusLigne, string diffGTMLigne,
-            string urlReferentLigne, string navigateurLigne, int quantiteTransfereeLigne,tm dateLigne);
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
-
     virtual ~InfosLigne ( );
-    // Mode d'emploi :
-    //
-    // Contrat :
-    //
 
 //------------------------------------------------------------------ PRIVE 
 

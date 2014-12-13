@@ -44,12 +44,13 @@ public:
 
 //-------------------------------------------- Constructeurs - destructeur
     Log(istream& file);
-
-    virtual ~Log();
     // Mode d'emploi :
     //
     // Contrat :
     //
+
+    virtual ~Log();
+
 
 //------------------------------------------------------------------ PRIVE
 
