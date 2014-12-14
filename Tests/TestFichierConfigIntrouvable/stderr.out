@@ -1,0 +1,7 @@
+
+Erreur, le fichier de config a été déplacé, supprimé ou vous n'avez plus les droits en lecture dessus.
+Ce fichier doit contenir l'url de base de votre site web suivit d'un point virgule ex : 
+http://monsupersiteweb.com;
+
+Ce fichier doit être dans le même dossier que le répertoire courant et doit se nommer "config.conf".
+Pour plus d'informations sur le fonctionnement de cette application, vous pouvez vous reporter au README.txt

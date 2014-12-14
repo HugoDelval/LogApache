@@ -1,0 +1,1 @@
+../LogApache.exe -t 5 -t 6 fichier.txt

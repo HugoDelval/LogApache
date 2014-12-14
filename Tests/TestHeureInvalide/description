@@ -1,0 +1,1 @@
+On lance le programme avec le flag -t mais avec un argument invalide (ici 24). On verifie donc si le programme informe l'utilisateur qu'il y a une erreur dans sa commande et que l'heure doit se situer entre 0 et 23.

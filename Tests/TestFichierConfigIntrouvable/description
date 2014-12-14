@@ -1,0 +1,2 @@
+Appelle le programme depuis un repertoire dans lequel il n'y a pas de fichier config.conf
+Le programme doit en informer l'utilisateur.

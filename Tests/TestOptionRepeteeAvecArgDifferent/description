@@ -1,0 +1,1 @@
+On lance le programme avec un flag repete  et un argument different (ici -t 5 -t 6). On verifie ainsi si le programme se lance correctement et prend en seulement en compte le dernier flag et argument comme si ils étaient seuls. Cela ne doit pas affecter la sortie du programme.

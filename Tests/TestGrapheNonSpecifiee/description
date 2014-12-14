@@ -1,0 +1,1 @@
+On lance le programme avec le flag -g mais sans argument. On verifie donc si le programme informe l'utilisateur qu'il y a une erreur dans sa commande.

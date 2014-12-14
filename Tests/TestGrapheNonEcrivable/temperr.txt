@@ -1,0 +1,13 @@
+
+Erreur d'ecriture dans le fichier dot.
+Vous devez indiquer en paramètre derrière le -g le nom du fichier dot que vous souhaitez générer.
+Conditions d'utilisation : L'adresse spécifiée doit être valide et vous devez avoir les droits d'ecriture à l'emplacement considéré.
+Syntaxe de l'option :
+
+    [-g nomFichier.dot]
+       Permet de produire un fichier au format GraphViz représentant le fichier log.
+       Le fichier sera produit à l'adresse [nomFichier.dot].
+       Chaque document apparaîtra sous la forme d'un noeud et chaque arc indiquera le nombre de parcours associés.
+
+exemple d'appel :     ./LogApache.exe -g nomFichier.dot /sousDossier/nomFichier.log
+Pour plus d'informations sur le fonctionnement de cette application, vous pouvez vous reporter au README.txt

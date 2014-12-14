@@ -1,0 +1,1 @@
+On lance le programme avec un flag repete (ici -x -x -x). On verifie ainsi si le programme se lance correctement et prend en compte le flag comme si il n'y en avait qu'un seul. Cela ne doit pas affecter la sortie du programme.

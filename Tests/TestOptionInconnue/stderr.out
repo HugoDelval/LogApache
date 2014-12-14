@@ -1,0 +1,19 @@
+LogApache: unknown option -- f
+
+Erreur.
+Vous avez lancé le programme avec trop d'options, ou des options qui n'existe pas !
+Les options possibles sont :
+
+    [-g nomFichier.dot]
+       Permet de produire un fichier au format GraphViz représentant le fichier log.
+       Le fichier sera produit à l'adresse [nomFichier.dot].
+       Chaque document apparaîtra sous la forme d'un noeud et chaque arc indiquera le nombre de parcours associés.
+
+    [-x]
+       Permet d'exclure tous les documents qui ont une extension de type image, css ou javascript
+
+    [-t heure]
+       Permet de ne prendre en compte que les hits qui sont dans le créneau horaire [heure, heure+1[.
+       l'argument [heure] est donc un entier, allant de 0 à 23.
+
+Pour plus d'informations sur le fonctionnement de cette application, vous pouvez vous reporter au README.txt

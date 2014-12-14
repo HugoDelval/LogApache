@@ -1,0 +1,1 @@
+Envoie une commande sans l'argument correspondant au fichier log : on verifie si le programme indique bien a l'utilisateur que le fichier log est necessaire au programme.

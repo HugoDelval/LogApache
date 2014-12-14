@@ -1,0 +1,1 @@
+On lance le programme avec un flag inconnu (ex -h). On verifie ainsi si le programme informe l'utilisateur et lui affiche les flags existants.
