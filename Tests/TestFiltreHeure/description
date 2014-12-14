@@ -1,0 +1,3 @@
+Test l'application avec filtre d'heure sur un fichier contenant des données variées 
+(extensions, dates, moteur de recherche...). 
+Permet de s'assurer que le top 10 s'affiche correctement et est correct, que le filtre d'heure fonctionne.

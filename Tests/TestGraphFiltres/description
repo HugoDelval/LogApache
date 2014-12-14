@@ -1,0 +1,4 @@
+Test l'application avec toutes les options possibles(avec graphique, filtre d'heure, filtre d'image)
+sur un fichier contenant des données variées (extensions, dates, moteur de recherche...).
+Permet de s'assurer que le top 10 s'affiche correctement et est correct, que script de création du 
+graphe est correct et que les filtres fonctionnent, le tout sur un même fichier.
