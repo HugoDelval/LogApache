@@ -9,7 +9,7 @@ using namespace std;
 const int AUCUNE_ERREUR=0;
 const int PAS_DE_ARG_FICHIER=1;
 const int FICHIER_LOG_INTROUVABLE =2;
-const int TROP_ARGUMENTS=3;
+const int ARGUMENT_INCONNU=3;
 const int ARG_HEURE_NON_VALIDE=4;
 const int FICHIER_DOT_NON_MODIFIABLE=5;
 const string DIRECTION_FICHIER="config.conf";
@@ -29,9 +29,9 @@ static string getBaseUrl()
         cerr<<"Ce fichier doit contenir l'url de base de votre site web suivit d'un point virgule ex : "<<endl;
         cerr<<"http://monsupersiteweb.com;"<<endl;
         cerr<<endl;
-        cerr<<"Ce fichier doit être dans le même dossier que l'exécutable et doit se nommer \""<<DIRECTION_FICHIER<<"\"."<<endl;
+        cerr<<"Ce fichier doit être dans le même dossier que le répertoire courant et doit se nommer \""<<DIRECTION_FICHIER<<"\"."<<endl;
         cerr<<"Pour plus d'informations sur le fonctionnement de cette application, vous pouvez vous reporter au README.txt"<<endl;
-        exit(1);
+        exit(0);
     }
     return res;
 }
@@ -66,67 +66,62 @@ static int executeApplication(int argc, char* argv[])
                 argGFlag.assign(optarg);
                 gFlag=true;
                 break;
+            default:
+                res=ARGUMENT_INCONNU;
+                break;
         }
     }
 
-    if(optind==(argc-1)) // si il ne reste qu'un argument sans flag (le nom du fichier normalement)
-    {
-        string nomFichierLog(argv[optind]);
-        ifstream file(nomFichierLog.c_str());
-        if(file.good())
+    if(res != ARGUMENT_INCONNU)
+        if(optind==(argc-1)) // si il ne reste qu'un argument sans flag (le nom du fichier normalement)
         {
-            //on peut commencer le traitement
-            Log monLog(file);
-            int heure=-1;
-            string baseUrl=getBaseUrl();
-            if(tFlag)
+            string nomFichierLog(argv[optind]);
+            ifstream file(nomFichierLog.c_str());
+            if(file.good())
             {
-                try {
-                    heure=atoi(argTFlag.c_str());
-                }catch(int e){
-                    heure=-1;
-                    res=ARG_HEURE_NON_VALIDE;
-                }
-                if(heure>23 || heure<-1 || (heure==0 && argTFlag.compare("0")!=0) )
+                //on peut commencer le traitement
+                Log monLog(file);
+                int heure=-1;
+                string baseUrl=getBaseUrl();
+                if(tFlag)
                 {
-                    heure=-1;
-                    res=ARG_HEURE_NON_VALIDE;
+                    try {
+                        heure=atoi(argTFlag.c_str());
+                    }catch(int e){
+                        heure=-1;
+                        res=ARG_HEURE_NON_VALIDE;
+                    }
+                    if(heure>23 || heure<-1 || (heure==0 && argTFlag.compare("0")!=0) )
+                    {
+                        heure=-1;
+                        res=ARG_HEURE_NON_VALIDE;
+                    }
                 }
-            }
-            if(gFlag)
-            {
-                string nomFichierDot(argGFlag);
-                ofstream fileDot(nomFichierDot.c_str());
-                if(fileDot.good())
-                {
-                    Graphe monGraphe(baseUrl,monLog,heure,xFlag,fileDot,true);
-                }
-                else
-                {
-                    res=FICHIER_DOT_NON_MODIFIABLE;
-                }
+                if(ARG_HEURE_NON_VALIDE != res)
+                    if (gFlag) {
+                        string nomFichierDot(argGFlag);
+                        ofstream fileDot(nomFichierDot.c_str());
+                        if (fileDot.good()) {
+                            Graphe monGraphe(baseUrl, monLog, heure, xFlag, fileDot, true);
+                        }
+                        else {
+                            res = FICHIER_DOT_NON_MODIFIABLE;
+                        }
+                    }
+                    else {
+                        Graphe monGraphe(baseUrl, monLog, heure, xFlag);
+                    }
             }
             else
             {
-                Graphe monGraphe(baseUrl,monLog,heure,xFlag);
+                res= FICHIER_LOG_INTROUVABLE;
             }
-        }
-        else
-        {
-            res= FICHIER_LOG_INTROUVABLE;
-        }
-    }
-    else
-    {
-        if(optind<(argc-1)) // si il reste plus d'un argument
-        {
-            res=TROP_ARGUMENTS;
         }
         else
         {
             res=PAS_DE_ARG_FICHIER;
         }
-    }
+
     return res;
 }
 
@@ -155,7 +150,7 @@ int main(int argc, char* argv[]) {
             cerr<<"exemple d'appel :     ./LogApache.exe /sousDossier/nomFichier.log"<<endl;
             cerr<<"Pour plus d'informations sur le fonctionnement de cette application, vous pouvez vous reporter au README.txt"<<endl;
             break;
-        case TROP_ARGUMENTS:
+        case ARGUMENT_INCONNU:
             cerr<<endl;
             cerr<<"Erreur."<<endl;
             cerr<<"Vous avez lancé le programme avec trop d'options, ou des options qui n'existe pas !"<<endl;
@@ -178,7 +173,7 @@ int main(int argc, char* argv[]) {
         case FICHIER_DOT_NON_MODIFIABLE:
             cerr<<endl;
             cerr<<"Erreur d'ecriture dans le fichier dot."<<endl;
-            cerr<<"Vous devez indiquer en paramètre derière le -g le nom du fichier dot que vous souhaitez générer."<<endl;
+            cerr<<"Vous devez indiquer en paramètre derrière le -g le nom du fichier dot que vous souhaitez générer."<<endl;
             cerr<<"Conditions d'utilisation : L'adresse spécifiée doit être valide et vous devez avoir les droits d'ecriture à l'emplacement considéré."<<endl;
             cerr<<"Syntaxe de l'option :"<<endl;
             cerr<<endl;
@@ -192,7 +187,7 @@ int main(int argc, char* argv[]) {
             break;
         case ARG_HEURE_NON_VALIDE:
             cerr<<"Erreur dans l'option -t. L'heure spécifiée n'est pas valide."<<endl;
-            cerr<<"Vous devez indiquer en paramètre derière le -t une heure."<<endl;
+            cerr<<"Vous devez indiquer en paramètre derrière le -t une heure."<<endl;
             cerr<<"Syntaxe de l'option :"<<endl;
             cerr<<endl;
             cerr<<"    [-t heure]"<<endl;
