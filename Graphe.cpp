@@ -193,7 +193,7 @@ bool Graphe::xFlagCompatible(string cib)
 {
     bool res=true;
     //si l'extension correspond a un fichier css ou js ou un des formats d'image relativement assez connus
-    string extensions[] = {"css","js","jpeg","jpg","gif","png","svg","bmp","ico"};
+    string extensions[] = {".css",".js",".jpeg",".jpg",".gif",".png",".svg",".bmp",".ico"};
     int taille=9;
     for(int i=0 ; i<taille && res; i++)
     {

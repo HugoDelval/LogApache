@@ -24,13 +24,13 @@ static string getBaseUrl()
     }
     else
     {
-        cout<<endl;
-        cout<<"Erreur, le fichier de config a été déplacé, supprimé ou vous n'avez plus les droits en lecture dessus."<<endl;
-        cout<<"Ce fichier doit contenir l'url de base de votre site web suivit d'un point virgule ex : "<<endl;
-        cout<<"http://monsupersiteweb.com;"<<endl;
-        cout<<endl;
-        cout<<"Ce fichier doit être dans le même dossier que l'exécutable et doit se nommer \""<<DIRECTION_FICHIER<<"\"."<<endl;
-        cout<<"Pour plus d'informations sur le fonctionnement de cette application, vous pouvez vous reporter au README.txt"<<endl;
+        cerr<<endl;
+        cerr<<"Erreur, le fichier de config a été déplacé, supprimé ou vous n'avez plus les droits en lecture dessus."<<endl;
+        cerr<<"Ce fichier doit contenir l'url de base de votre site web suivit d'un point virgule ex : "<<endl;
+        cerr<<"http://monsupersiteweb.com;"<<endl;
+        cerr<<endl;
+        cerr<<"Ce fichier doit être dans le même dossier que l'exécutable et doit se nommer \""<<DIRECTION_FICHIER<<"\"."<<endl;
+        cerr<<"Pour plus d'informations sur le fonctionnement de cette application, vous pouvez vous reporter au README.txt"<<endl;
         exit(1);
     }
     return res;
@@ -56,18 +56,15 @@ static int executeApplication(int argc, char* argv[])
         switch (optch)
         {
             case 'x':
-                //cout<<"x"<<endl;
                 xFlag=true;
                 break;
             case 't':
                 argTFlag.assign(optarg);
                 tFlag=true;
-                //cout<<"t flag avec : "<<argTFlag<<endl;
                 break;
             case 'g':
                 argGFlag.assign(optarg);
                 gFlag=true;
-                //cout<<"t flag avec : "<<argGFlag<<endl;
                 break;
         }
     }
@@ -143,66 +140,67 @@ int main(int argc, char* argv[]) {
             cout<<"Merci d'avoir utilisé cette application."<<endl;
             break;
         case PAS_DE_ARG_FICHIER:
-            cout<<endl;
-            cout<<"Erreur de commande."<<endl;
-            cout<<"Vous devez indiquer en dernier paramètre le nom du fichier log que vous souhaitez traiter."<<endl;
-            cout<<"exemple d'appel :     ./analog nomFichier.log"<<endl;
-            cout<<"Pour plus d'informations sur le fonctionnement de cette application, vous pouvez vous reporter au README.txt"<<endl;
+            cerr<<endl;
+            cerr<<"Erreur de commande."<<endl;
+            cerr<<"Vous devez indiquer en dernier paramètre le nom du fichier log que vous souhaitez traiter."<<endl;
+            cerr<<"exemple d'appel :     ./LogApache.exe nomFichier.log"<<endl;
+            cerr<<"Ceci est peut-être dû au fait que vous avez omis de spécifier le paramètre obligatoire après '-t' ou un '-g'"<<endl;
+            cerr<<"Pour plus d'informations sur le fonctionnement de cette application, vous pouvez vous reporter au README.txt"<<endl;
             break;
         case FICHIER_LOG_INTROUVABLE:
-            cout<<endl;
-            cout<<"Erreur d'ouverture de fichier."<<endl;
-            cout<<"Vous devez indiquer en dernier paramètre le nom du fichier log que vous souhaitez traiter."<<endl;
-            cout<<"Conditions d'utilisation : Le fichier doit exister à l'adresse spécifiée et vous devez avoir les droits en lecture dessus."<<endl;
-            cout<<"exemple d'appel :     ./analog /sousDossier/nomFichier.log"<<endl;
-            cout<<"Pour plus d'informations sur le fonctionnement de cette application, vous pouvez vous reporter au README.txt"<<endl;
+            cerr<<endl;
+            cerr<<"Erreur d'ouverture de fichier."<<endl;
+            cerr<<"Vous devez indiquer en dernier paramètre le nom du fichier log que vous souhaitez traiter."<<endl;
+            cerr<<"Conditions d'utilisation : Le fichier doit exister à l'adresse spécifiée et vous devez avoir les droits en lecture dessus."<<endl;
+            cerr<<"exemple d'appel :     ./LogApache.exe /sousDossier/nomFichier.log"<<endl;
+            cerr<<"Pour plus d'informations sur le fonctionnement de cette application, vous pouvez vous reporter au README.txt"<<endl;
             break;
         case TROP_ARGUMENTS:
-            cout<<endl;
-            cout<<"Erreur."<<endl;
-            cout<<"Vous avez lancé le programme avec trop d'options, ou des options qui n'existe pas !"<<endl;
-            cout<<"Les options possibles sont :"<<endl;
-            cout<<endl;
-            cout<<"    [-g nomFichier.dot]"<<endl;
-            cout<<"       Permet de produire un fichier au format GraphViz représentant le fichier log."<<endl;
-            cout<<"       Le fichier sera produit à l'adresse [nomFichier.dot]."<<endl;
-            cout<<"       Chaque document apparaîtra sous la forme d'un noeud et chaque arc indiquera le nombre de parcours associés."<<endl;
-            cout<<endl;
-            cout<<"    [-x]"<<endl;
-            cout<<"       Permet d'exclure tous les documents qui ont une extension de type image, css ou javascript"<<endl;
-            cout<<endl;
-            cout<<"    [-t heure]"<<endl;
-            cout<<"       Permet de ne prendre en compte que les hits qui sont dans le créneau horaire [heure, heure+1[."<<endl;
-            cout<<"       l'argument [heure] est donc un entier, allant de 0 à 23."<<endl;
-            cout<<endl;
-            cout<<"Pour plus d'informations sur le fonctionnement de cette application, vous pouvez vous reporter au README.txt"<<endl;
+            cerr<<endl;
+            cerr<<"Erreur."<<endl;
+            cerr<<"Vous avez lancé le programme avec trop d'options, ou des options qui n'existe pas !"<<endl;
+            cerr<<"Les options possibles sont :"<<endl;
+            cerr<<endl;
+            cerr<<"    [-g nomFichier.dot]"<<endl;
+            cerr<<"       Permet de produire un fichier au format GraphViz représentant le fichier log."<<endl;
+            cerr<<"       Le fichier sera produit à l'adresse [nomFichier.dot]."<<endl;
+            cerr<<"       Chaque document apparaîtra sous la forme d'un noeud et chaque arc indiquera le nombre de parcours associés."<<endl;
+            cerr<<endl;
+            cerr<<"    [-x]"<<endl;
+            cerr<<"       Permet d'exclure tous les documents qui ont une extension de type image, css ou javascript"<<endl;
+            cerr<<endl;
+            cerr<<"    [-t heure]"<<endl;
+            cerr<<"       Permet de ne prendre en compte que les hits qui sont dans le créneau horaire [heure, heure+1[."<<endl;
+            cerr<<"       l'argument [heure] est donc un entier, allant de 0 à 23."<<endl;
+            cerr<<endl;
+            cerr<<"Pour plus d'informations sur le fonctionnement de cette application, vous pouvez vous reporter au README.txt"<<endl;
             break;
         case FICHIER_DOT_NON_MODIFIABLE:
-            cout<<endl;
-            cout<<"Erreur d'ecriture dans le fichier dot."<<endl;
-            cout<<"Vous devez indiquer en paramètre derière le -g le nom du fichier dot que vous souhaitez générer."<<endl;
-            cout<<"Conditions d'utilisation : L'adresse spécifiée doit être valide et vous devez avoir les droits d'ecriture à l'emplacement considéré."<<endl;
-            cout<<"Syntaxe de l'option :"<<endl;
-            cout<<endl;
-            cout<<"    [-g nomFichier.dot]"<<endl;
-            cout<<"       Permet de produire un fichier au format GraphViz représentant le fichier log."<<endl;
-            cout<<"       Le fichier sera produit à l'adresse [nomFichier.dot]."<<endl;
-            cout<<"       Chaque document apparaîtra sous la forme d'un noeud et chaque arc indiquera le nombre de parcours associés."<<endl;
-            cout<<endl;
-            cout<<"exemple d'appel :     ./analog -g nomFichier.dot /sousDossier/nomFichier.log"<<endl;
-            cout<<"Pour plus d'informations sur le fonctionnement de cette application, vous pouvez vous reporter au README.txt"<<endl;
+            cerr<<endl;
+            cerr<<"Erreur d'ecriture dans le fichier dot."<<endl;
+            cerr<<"Vous devez indiquer en paramètre derière le -g le nom du fichier dot que vous souhaitez générer."<<endl;
+            cerr<<"Conditions d'utilisation : L'adresse spécifiée doit être valide et vous devez avoir les droits d'ecriture à l'emplacement considéré."<<endl;
+            cerr<<"Syntaxe de l'option :"<<endl;
+            cerr<<endl;
+            cerr<<"    [-g nomFichier.dot]"<<endl;
+            cerr<<"       Permet de produire un fichier au format GraphViz représentant le fichier log."<<endl;
+            cerr<<"       Le fichier sera produit à l'adresse [nomFichier.dot]."<<endl;
+            cerr<<"       Chaque document apparaîtra sous la forme d'un noeud et chaque arc indiquera le nombre de parcours associés."<<endl;
+            cerr<<endl;
+            cerr<<"exemple d'appel :     ./LogApache.exe -g nomFichier.dot /sousDossier/nomFichier.log"<<endl;
+            cerr<<"Pour plus d'informations sur le fonctionnement de cette application, vous pouvez vous reporter au README.txt"<<endl;
             break;
         case ARG_HEURE_NON_VALIDE:
-            cout<<"Erreur dans l'option -t. L'heure spécifiée n'est pas valide."<<endl;
-            cout<<"Vous devez indiquer en paramètre derière le -t une heure."<<endl;
-            cout<<"Syntaxe de l'option :"<<endl;
-            cout<<endl;
-            cout<<"    [-t heure]"<<endl;
-            cout<<"       Permet de ne prendre en compte que les hits qui sont dans le créneau horaire [heure, heure+1[."<<endl;
-            cout<<"       l'argument [heure] est donc un entier, allant de 0 à 23."<<endl;
-            cout<<endl;
-            cout<<"exemple d'appel :     ./analog -h 12 /sousDossier/nomFichier.log"<<endl;
-            cout<<"Pour plus d'informations sur le fonctionnement de cette application, vous pouvez vous reporter au README.txt"<<endl;
+            cerr<<"Erreur dans l'option -t. L'heure spécifiée n'est pas valide."<<endl;
+            cerr<<"Vous devez indiquer en paramètre derière le -t une heure."<<endl;
+            cerr<<"Syntaxe de l'option :"<<endl;
+            cerr<<endl;
+            cerr<<"    [-t heure]"<<endl;
+            cerr<<"       Permet de ne prendre en compte que les hits qui sont dans le créneau horaire [heure, heure+1[."<<endl;
+            cerr<<"       l'argument [heure] est donc un entier, allant de 0 à 23."<<endl;
+            cerr<<endl;
+            cerr<<"exemple d'appel :     ./LogApache.exe -h 12 /sousDossier/nomFichier.log"<<endl;
+            cerr<<"Pour plus d'informations sur le fonctionnement de cette application, vous pouvez vous reporter au README.txt"<<endl;
             break;
         default:
             break;
