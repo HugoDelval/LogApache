@@ -1,0 +1,4 @@
+Test l'application sans option avec un fichier contenant plus de 10 requetes
+a egalite.
+Permet de verifier qu'en cas d'egalite, le programme selectionne bien la requete demandee
+,pour la premiere fois, le plus tot dans le fichier log.

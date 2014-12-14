@@ -1,0 +1,5 @@
+digraph {
+"-" -> "/favicon.html" [label="6"];
+"-" -> "/temps/3IF3.ics" [label="5"];
+"http://intranet-if.insa-lyon.fr/temps" -> "/temps/FondInsa.jpg" [label="5"];
+}

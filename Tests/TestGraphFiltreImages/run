@@ -1,0 +1,1 @@
+../LogApache.exe -x -g graph.txt fichier.txt

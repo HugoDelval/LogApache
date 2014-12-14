@@ -1,0 +1,4 @@
+Test l'application avec graphe sur un fichier contenant des données variées 
+(extensions, dates, moteur de recherche...). 
+Permet de s'assurer que le top 10 s'affiche correctement et est correct et que le script de création du 
+graphe est correct.

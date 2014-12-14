@@ -1,0 +1,4 @@
+Test l'application avec filtre d'images et filtre d'heure sur un fichier contenant des données variées 
+(extensions, dates, moteur de recherche...). 
+Permet de s'assurer que le top 10 s'affiche correctement et est correct, que les filtres d'image et d'heure
+fonctionnent, le tout sur un même fichier.
