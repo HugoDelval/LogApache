@@ -21,6 +21,18 @@ static const char SEP_CROCHET_OUVRANT ='[';
 static const char SEP_CROCHET_FERMANT =']';
 static const char SEP_DEUX_POINTS =':';
 static const char SEP_GUILLEMET ='"';
+const int JANVIER=0;
+const int FEVRIER=1;
+const int MARS=2;
+const int AVRIL=3;
+const int MAI=4;
+const int JUIN=5;
+const int JUILLET=6;
+const int AOUT=7;
+const int SEPTEMBRE=8;
+const int OCTOBRE=9;
+const int NOMVEMBRE=10;
+const int DECEMBRE=11;
 
 //---------------------------------------------------- Variables de classe
 
@@ -31,8 +43,6 @@ static const char SEP_GUILLEMET ='"';
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Methodes publiques
-
-int trouveMois(string mois);
 
 string InfosLigne::GetAddresseIP() const{
     return addresseIP;
@@ -71,7 +81,6 @@ int InfosLigne::GetStatus() const {
     return status;
 }
 
-
 string InfosLigne::GetUrlReferent() const {
     return urlReferent;
 }
@@ -84,15 +93,8 @@ int InfosLigne::GetQuantiteTransferee() const {
     return quantiteTransferee;
 }
 
-
-// type InfosLigne::Methode ( liste de parametres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Methode
-
-
 //------------------------------------------------- Surcharge d'operateurs
+int trouveMois(string mois);
 
 istream & operator>>(istream &is, InfosLigne &ligne)
 {
@@ -139,16 +141,6 @@ istream & operator>>(istream &is, InfosLigne &ligne)
 
     ligne.status=atoi(chaineStatus.c_str());
     ligne.quantiteTransferee=atoi(chaineQuantiteTransferee.c_str());
-/*
-    cout<<"ip:"<<ligne.addresseIP<<'.'<<endl;
-    cout<<"mois:"<<mois<<'.'<<endl;
-    cout<<"heure:"<<ligne.date.tm_hour<<'.'<<endl;
-    cout<<"sec:"<<ligne.date.tm_sec<<'.'<<endl;
-    cout<<"ref:"<<ligne.urlReferent<<'.'<<endl;
-    cout<<"cib:"<<ligne.urlDemandee<<'.'<<endl;
-    cout<<"navigateur:"<<ligne.navigateur<<'.'<<endl;
-    cout<<"poubelle:"<<endl<<poubelle<<'.'<<endl;
-*/
 
     return is;
 }//----- Fin de operator >>
@@ -157,13 +149,33 @@ istream & operator>>(istream &is, InfosLigne &ligne)
 //-------------------------------------------- Constructeurs - destructeur
 InfosLigne::InfosLigne ()
 {
+    addresseIP="";
+    user="";
+    logName="";
+    date=tm();
+    diffGTM="";
+    action="";
+    protocole="";
+    urlDemandee="";
+    status=0;
+    quantiteTransferee=0;
+    urlReferent="";
+    navigateur="";
 }
 
 
 InfosLigne::~InfosLigne ( )
-// Algorithme :
-//
 {
+    addresseIP.clear();
+    user.clear();
+    logName.clear();
+    diffGTM.clear();
+    action.clear();
+    protocole.clear();
+    urlDemandee.clear();
+    urlReferent.clear();
+    navigateur.clear();
+
 #ifdef MAP
     cout << "Appel au destructeur de InfosLigne" << endl;
 #endif
@@ -177,31 +189,89 @@ InfosLigne::~InfosLigne ( )
 //------------------------------------------------------- Methodes privees
 int trouveMois(string mois)
 {
-    int res=0;
+    int res(-1);
+
     if(mois.compare("Jan"))
-        res=0;
-    else if(mois.compare("Feb"))
-        res=1;
-    else if(mois.compare("Mar"))
-        res=2;
-    else if(mois.compare("Apr"))
-        res=3;
-    else if(mois.compare("May"))
-        res=4;
-    else if(mois.compare("Jun"))
-        res=5;
-    else if(mois.compare("Jul"))
-        res=6;
-    else if(mois.compare("Aug"))
-        res=7;
-    else if(mois.compare("Sep"))
-        res=8;
-    else if(mois.compare("Oct"))
-        res=9;
-    else if(mois.compare("Nov"))
-        res=10;
-    else if(mois.compare("Dec"))
-        res=11;
+    {
+        res = JANVIER;
+    }
+    else
+    {
+        if(mois.compare("Feb"))
+        {
+            res = FEVRIER;
+        }
+        else
+        {
+            if (mois.compare("Mar"))
+            {
+                res = MARS;
+            }
+            else
+            {
+                if(mois.compare("Apr"))
+                {
+                    res = AVRIL;
+                }
+                else
+                {
+                    if (mois.compare("May"))
+                    {
+                        res = MAI;
+                    }
+                    else
+                    {
+                        if (mois.compare("Jun"))
+                        {
+                            res = JUIN;
+                        }
+                        else
+                        {
+                            if (mois.compare("Jul"))
+                            {
+                                res = JUILLET;
+                            }
+                            else
+                            {
+                                if (mois.compare("Aug"))
+                                {
+                                    res = AOUT;
+                                }
+                                else
+                                {
+                                    if (mois.compare("Sep"))
+                                    {
+                                        res = SEPTEMBRE;
+                                    }
+                                    else
+                                    {
+                                        if (mois.compare("Oct"))
+                                        {
+                                            res = OCTOBRE;
+                                        }
+                                        else
+                                        {
+                                            if (mois.compare("Nov"))
+                                            {
+                                                res = NOMVEMBRE;
+                                            }
+                                            else
+                                            {
+                                                if (mois.compare("Dec"))
+                                                {
+                                                    res = DECEMBRE;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     return res;
 }

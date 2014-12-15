@@ -73,16 +73,12 @@ Graphe::~Graphe ( )
 
 //------------------------------------------------------- Methodes privees
 void Graphe::initialiserGraphe(Log &unLog, int heure, bool xFlag, bool fichierDot)
-// Algorithme :
-// initialise le graphe en lisant le log et en ne selectionnant que les infos correspondantes a l'heure le xFlag
-// remplissage de l'architecture correspondante au dot si fichierDot=true
 {
     list<InfosLigne> leFichierLog = unLog.GetListeLignes();
     string id="";
     string ref="";
     string cib="";
 
-    //cout<<leFichierLog.size()<<endl;
     for (list<InfosLigne>::iterator ci = leFichierLog.begin(); ci != leFichierLog.end(); ++ci)
     {
         cib=nettoyer(ci->GetUrlDemandee());
@@ -128,8 +124,6 @@ void Graphe::initialiserGraphe(Log &unLog, int heure, bool xFlag, bool fichierDo
 }
 
 string Graphe::nettoyer(string stringANettoyer)
-// Algorithme :
-// nettoie l'url : supprime l'url de base et les options etc
 {
     string to="";
     size_t start_pos_base = stringANettoyer.find(baseUrl);
@@ -162,8 +156,6 @@ string Graphe::nettoyer(string stringANettoyer)
 }
 
 void Graphe::genererFichier(ostream &direction)
-// Algorithme :
-// ecrit les informations dans le fichier
 {
     if(direction.good())
     {
@@ -188,8 +180,6 @@ void Graphe::genererFichier(ostream &direction)
 }
 
 bool Graphe::xFlagCompatible(string cib)
-// Algorithme :
-// determine si l'extension est autorisee
 {
     bool res=true;
     //si l'extension correspond a un fichier css ou js ou un des formats d'image relativement assez connus
@@ -211,8 +201,6 @@ bool compareDocuments(const Document* first, const Document* second)
 }
 
 void Graphe::afficherTop10()
-// Algorithme :
-// affiche a la sortie standard le top10 des ressources les plus consultees
 {
     listeDocTrieeSelonVisites.sort(compareDocuments);
     unsigned long N = 9L;

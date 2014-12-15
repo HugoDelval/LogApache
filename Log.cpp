@@ -45,18 +45,18 @@ list<InfosLigne> Log::GetListeLignes() const
 
 Log::Log(istream& file)
 {
-    InfosLigne i;
-    while(file>>i)
+    InfosLigne uneLigne;
+    while(file>>uneLigne)
     {
-        listeLignes.push_back(i);
+        listeLignes.push_back(uneLigne);
     }
 }
 
 
 Log::~Log ( )
-// Algorithme :
-//
 {
+    listeLignes.clear();
+
 #ifdef MAP
     cout << "Appel au destructeur de <file_bas>" << endl;
 #endif
