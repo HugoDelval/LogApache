@@ -1,6 +1,0 @@
-
-Erreur de commande.
-Vous devez indiquer en dernier paramètre le nom du fichier log que vous souhaitez traiter.
-exemple d'appel :     ./LogApache.exe nomFichier.log
-Ceci est peut-être dû au fait que vous avez omis de spécifier le paramètre obligatoire après '-t' ou un '-g'
-Pour plus d'informations sur le fonctionnement de cette application, vous pouvez vous reporter au README.txt

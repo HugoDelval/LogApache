@@ -1,6 +1,0 @@
-
-Erreur d'ouverture de fichier.
-Vous devez indiquer en dernier paramètre le nom du fichier log que vous souhaitez traiter.
-Conditions d'utilisation : Le fichier doit exister à l'adresse spécifiée et vous devez avoir les droits en lecture dessus.
-exemple d'appel :     ./LogApache.exe /sousDossier/nomFichier.log
-Pour plus d'informations sur le fonctionnement de cette application, vous pouvez vous reporter au README.txt

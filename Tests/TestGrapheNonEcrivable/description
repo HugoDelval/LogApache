@@ -1,1 +1,2 @@
 On rend le fichier de sortie graphe.dot non ecrivable pour voir si le programme en informe l'utilisateur.
+ATTENTION ce test n'est valide que si on a bien rendu le fichier graphe.dot non ecrivable grace a un chmod par exemple

@@ -19,14 +19,12 @@ fi
 
 cd $Directory
 
-
 if [ -r "description" ]
 then 
   echo "-----------------------------------------------------------"
   echo "Description :"
   fold description -w 60 -s
   echo "-----------------------------------------------------------"
-  descript=`cat description`
 fi
 
 nTestCount=0
@@ -96,7 +94,7 @@ then
     resultGlobal=0
   fi
   # clean temporary out file
-  # rm temp.txt
+  rm temp.txt
 fi
 
 # compare stderr if concerned
@@ -114,7 +112,7 @@ then
     resultGlobal=0
   fi
   # clean temporary out file
-  # rm temperr.txt
+  rm temperr.txt
 fi
 
 # compare files created if concerned
@@ -171,7 +169,7 @@ then
   fi
   if [ -w "$2" ]
   then
-    echo "$Directory;$resultRC;$resultOut;$resultErr;$resultFiles;$resultGlobal;\"$descript\"" >>$2
+    echo "$Directory;$resultRC;$resultOut;$resultErr;$resultFiles;$resultGlobal" >>$2
   fi
 fi
 
