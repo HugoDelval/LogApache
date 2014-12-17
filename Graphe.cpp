@@ -195,7 +195,10 @@ bool Graphe::xFlagCompatible(const string &cib) const
     return res;
 }
 
-bool compareDocuments(const Document* first, const Document* second)
+/*
+compare deux Document, permet de trier la liste du top10
+ */
+bool compareDocuments(const Graphe::Document* first, const Graphe::Document* second)
 {
     return (first->NbAcces > second->NbAcces) ;
 }

@@ -15,7 +15,6 @@ copyright            : (C) 2014 par PAPIN/DELVAL
 #include <string>
 #include <iostream>
 #include "Log.h"
-#include "Structures.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -93,15 +92,42 @@ private:
 
 private:
 //------------------------------------------------------- Attributs prives
-    typedef map<string, Arc> DicoIdArc;                  // map d'Arcs identifies par l'IdArc de l'Arc
-    typedef map<string, Document*> DicoNomDocument;      // map de pointeurs vers des Document identifies par le NomDocument du Document
-    typedef list<Document*> ListeDoc;                    // liste  des Document
-    DicoIdArc dicoIdArc;
+    struct Document
+/*
+Represente un document echange entre le serveur et l'utilisateur
+Une entite dans le graph genere par l'application
+ */
+    {
+        std::string NomDocument;            // cle d'un Document
+        int NbAcces;                        // nombre d'acces a ce Document
+        Document(std::string nom="nomParDefaut", int nb=1):
+                NomDocument(nom), NbAcces(nb){}
+    };
+
+    struct Arc
+/*
+Represente un lien entre un Document referent et un Document cible
+Un arc associe a une cadinalite dans le graph genere par l'application
+ */
+    {
+        std::string IdArc;      // cle d'un Arc
+        int NbParcours;         // nombre de lien (dans ce sens) entre un referent et une cible
+        Document* Refer;        // Document referent
+        Document* Cible;        // Document cible
+        Arc(Document* ref, Document* cib, int nb=1, std::string id=""):
+                Refer(ref), Cible(cib), NbParcours(nb), IdArc(id){}
+    };
+
+    typedef map<string, Arc> DicoIdArc;
+    typedef map<string, Document*> DicoNomDocument;
+    typedef list<Document*> ListeDoc;
+    DicoIdArc dicoIdArc;                                 // map d'Arcs identifies par l'IdArc de l'Arc
     string baseUrl;                                      // base de l'URL
-    DicoNomDocument dicoNomDoc;
-    ListeDoc listeDocTrieeSelonVisites;
+    DicoNomDocument dicoNomDoc;                          // map de pointeurs vers des Document identifies par le NomDocument du Document
+    ListeDoc listeDocTrieeSelonVisites;                  // liste  des Document
 
 //---------------------------------------------------------- Classes amies
+friend bool compareDocuments(const Graphe::Document* first, const Graphe::Document* second);
 
 //-------------------------------------------------------- Classes privees
 
