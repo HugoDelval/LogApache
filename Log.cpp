@@ -58,7 +58,7 @@ Log::~Log ( )
     listeLignes.clear();
 
 #ifdef MAP
-    cout << "Appel au destructeur de <file_bas>" << endl;
+    cout << "Appel au destructeur de InfosLigne" << endl;
 #endif
 } //----- Fin de ~Log
 

@@ -41,7 +41,8 @@ static int executeApplication(int argc, char* argv[])
     int res=AUCUNE_ERREUR;
 
     int optch;
-    extern int opterr;
+    extern int opterr; // declare avec getopt
+    // permet d'avertir getopt que l'on accepte que les -x, -t (+ argument car presence de ':') et -g (+ argument car presence de ':')
     char format[] = "xt:g:";
     opterr = 1;
 

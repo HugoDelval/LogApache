@@ -63,20 +63,20 @@ private:
     // Contrat :
     //
 
-    string nettoyer(string stringANettoyer);
+    void nettoyer(string &stringANettoyer) const;
     // Mode d'emploi :
     //      Nettoie l'url : supprime l'url de base, les options, etc... et renvoie la partie de l'URL dont
     //              on a besoin pour l'application.
     // Contrat :
     //
 
-    void genererFichier(ostream &direction);
+    void genererFichier(ostream &direction) const;
     // Mode d'emploi :
     //      Ecrit les informations dans le fichier output stream en parametre.
     // Contrat :
     //
 
-    bool xFlagCompatible(string cib);
+    bool xFlagCompatible(const string &cib) const;
     // Mode d'emploi :
     //       Determine si l'extension est autorisee (elle est non autorisee si c'est une extension d'image).
     //              Retourne false si c'est une image

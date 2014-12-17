@@ -81,11 +81,13 @@ void Graphe::initialiserGraphe(Log &unLog, int heure, bool xFlag, bool fichierDo
 
     for (list<InfosLigne>::iterator ci = leFichierLog.begin(); ci != leFichierLog.end(); ++ci)
     {
-        cib=nettoyer(ci->GetUrlDemandee());
+        cib=ci->GetUrlDemandee();
+        nettoyer(cib);
         // si la ligne est compatible avec les filtres qu'a demande l'utilisateur alors on ajoute la ligne aux structures de donnees
         if( (!xFlag || xFlagCompatible(cib)) && (heure==-1 || ci->GetDate().tm_hour==heure) )
         {
-            ref=nettoyer(ci->GetUrlReferent());
+            ref=ci->GetUrlReferent();
+            nettoyer(ref);
             if(fichierDot)
             {
                 id=ref + cib;
@@ -123,7 +125,7 @@ void Graphe::initialiserGraphe(Log &unLog, int heure, bool xFlag, bool fichierDo
     }
 }
 
-string Graphe::nettoyer(string stringANettoyer)
+void Graphe::nettoyer(string &stringANettoyer) const
 {
     string to="";
     size_t start_pos_base = stringANettoyer.find(baseUrl);
@@ -152,23 +154,21 @@ string Graphe::nettoyer(string stringANettoyer)
     while(stringANettoyer.back() == '/')
         stringANettoyer=stringANettoyer.substr(0, stringANettoyer.size()-1);
 
-    return stringANettoyer;
 }
 
-void Graphe::genererFichier(ostream &direction)
+void Graphe::genererFichier(ostream &direction) const
 {
     if(direction.good())
     {
         direction<<"digraph {"<<endl;
-        string labelC="";
-        string labelR="";
         int numC=-1;
         int numR=-1;
-        for(DicoIdArc::iterator it=dicoIdArc.begin() ; it!=dicoIdArc.end() ; ++it)
+        for(DicoIdArc::const_iterator it=dicoIdArc.begin() ; it!=dicoIdArc.end() ; ++it)
         {
-            labelC=it->second.Cible->NomDocument;
-            labelR=it->second.Refer->NomDocument;
-            direction<<'"'<<labelR<<"\" -> \""<<labelC<<"\" [label=\""<<it->second.NbParcours<<"\"];"<<endl;
+            direction<<'"'<<it->second.Refer->NomDocument<<"\" -> \""
+                          <<it->second.Cible->NomDocument<<"\" [label=\""
+                          <<it->second.NbParcours<<"\"];"
+                     <<endl;
         }
         direction<<"}"<<endl;
     }
@@ -179,7 +179,7 @@ void Graphe::genererFichier(ostream &direction)
     }
 }
 
-bool Graphe::xFlagCompatible(string cib)
+bool Graphe::xFlagCompatible(const string &cib) const
 {
     bool res=true;
     //si l'extension correspond a un fichier css ou js ou un des formats d'image relativement assez connus
@@ -209,7 +209,7 @@ void Graphe::afficherTop10()
         N=listeDocTrieeSelonVisites.size()-1;
     }
     Document* docTop10;
-    ListeDoc::iterator it = listeDocTrieeSelonVisites.begin();
+    ListeDoc::const_iterator it = listeDocTrieeSelonVisites.begin();
     int numero=1;
     while(numero<=10 && it!=listeDocTrieeSelonVisites.end())
     {
@@ -218,5 +218,4 @@ void Graphe::afficherTop10()
         it++;
         numero++;
     }
-
 }
